@@ -1,42 +1,17 @@
 <?php
+require_once('inc/constants.php');
+require_once('inc/enqueue.php');
 
-function phtographyinyork_enqueue() {
-	wp_register_style(
-		'main',
-		get_template_directory_uri() . '/style.css',
-		array(),
-		'0.0.1',
-		'all'
-	);
+function piy_enqueue() {
+	wp_register_style( 'main', PIY_DIR . '/style.css', array(), PIY_VERSION, 'all' );
 
-	wp_register_script(
-		'react',
-		get_template_directory_uri() . '/app/lib/react/react-with-addons.min.js',
-		array(),
-		'15.4.2',
-		true
-	);
-	wp_register_script(
-		'react-dom',
-		get_template_directory_uri() . '/app/lib/react/react-dom.min.js',
-		array('react'),
-		'15.4.2',
-		true
-	);
-	wp_register_script(
-		'photography-in-york',
-		get_template_directory_uri() . '/app/scripts/index.js',
-		array('react','react-dom'),
-		'0.0.1',
-		true
-	);
+	piy_register_lib('react', '/react/react-with-addons', PIY_REACT_VERSION);
+	piy_register_lib('react-dom', '/react/react-dom', PIY_REACT_VERSION);
+	piy_register_app_script('photography-in-york', '/index.js', array('react','react-dom'));
 
-	wp_enqueue_style('main');
-
-	wp_enqueue_script('react');
-	wp_enqueue_script('react-dom');
-	wp_enqueue_script('photography-in-york');
+	piy_enqueuer('style', array('main'));
+	piy_enqueuer('script', array('react', 'react-dom', 'photography-in-york'));
 }
-add_action( 'wp_enqueue_scripts', 'phtographyinyork_enqueue' );
+add_action( 'wp_enqueue_scripts', 'piy_enqueue' );
 
 ?>
