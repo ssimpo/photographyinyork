@@ -1,19 +1,42 @@
-<?php
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * e.g., it puts together the home page when no home.php file exists.
- *
- * Learn more: {@link https://codex.wordpress.org/Template_Hierarchy}
- *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
- */
+<?php get_header(); ?>
 
-get_header(); ?>
+<div id="errors" style="
+  background: #c00;
+  color: #fff;
+  display: none;
+  margin: -20px -20px 20px;
+  padding: 20px;
+  white-space: pre-wrap;
+"></div>
+<div id="container"></div>
+<script>
+	window.addEventListener('mousedown', function(e) {
+		document.body.classList.add('mouse-navigation');
+		document.body.classList.remove('kbd-navigation');
+	});
+	window.addEventListener('keydown', function(e) {
+		if (e.keyCode === 9) {
+			document.body.classList.add('kbd-navigation');
+			document.body.classList.remove('mouse-navigation');
+		}
+	});
+	window.addEventListener('click', function(e) {
+		if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
+			e.preventDefault();
+		}
+	});
+	window.onerror = function(message, source, line, col, error) {
+		var text = error ? error.stack || error : message + ' (at ' + source + ':' + line + ':' + col + ')';
+		errors.textContent += text + '\n';
+		errors.style.display = '';
+	};
+	console.error = (function(old) {
+		return function error() {
+			errors.textContent += Array.prototype.slice.call(arguments).join(' ') + '\n';
+			errors.style.display = '';
+			old.apply(this, arguments);
+		}
+	})(console.error);
+</script>
 
 <?php get_footer(); ?>
