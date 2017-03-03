@@ -16,6 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "react": "^15.4.2"
+    "react": "^15.4.2",
+    "react-foundation": "https://github.com/nordsoftware/react-foundation.git#^0.7.0",
+    "classnames": "https://github.com/JedWatson/classnames.git#^2.2.5"
   }
 }

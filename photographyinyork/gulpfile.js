@@ -23,12 +23,29 @@ gulp.task('build', function() {
 			output: {
 				filename: 'index.js'
 			},
+			externals: {
+				'react': 'React'
+			},
+			resolve: {
+				alias: {
+					classnames: 'classnames',
+					foundation:  __dirname +  '/app/lib/react-foundation/src/index.js'
+				},
+				extensions: ['', '.webpack.js', '.web.js', 'min.js', '.js', '.jsx', '.json'],
+				modulesDirectories: ['app/lib']
+			},
 			module: {
 				loaders: [{
 					test: /\.jsx$/,
 					loader: 'babel-loader',
 					query: {
 						presets: ['es2015', 'react']
+					}
+				}, {
+					test: /\.js$/,
+					loader: 'babel-loader',
+					query: {
+						presets: ['es2015']
 					}
 				}]
 			},

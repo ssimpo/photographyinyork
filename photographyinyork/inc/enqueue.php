@@ -1,10 +1,14 @@
 <?php
 function piy_register_lib($name, $path, $version, $deps=array(), $footer=true) {
-	wp_register_script( $name, PIY_APP_LIB_DIR . $path . '.' . PIY_LIB_JS_EXT, $deps, $version, $footer );
+	$src = PIY_APP_LIB_DIR . $path . '.' . (PIY_USE_MIN?'min.js':'js');
+	if (!PIY_PAGESPEED) $src = piy_add_query_param($src, 'PageSpeedNoop', (string) rand());
+	wp_register_script( $name, $src, $deps, $version, $footer );
 }
 
 function piy_register_app_script($name, $path, $deps=array(), $version=PIY_VERSION, $footer=true) {
-	wp_register_script( $name, PIY_APP_SCRIPTS_DIR . $path, $deps, $version, $footer );
+	$src = PIY_APP_SCRIPTS_DIR . $path;
+	if (!PIY_PAGESPEED) $src = piy_add_query_param($src, 'PageSpeedNoop', (string) rand());
+	wp_register_script( $name, $src, $deps, $version, $footer );
 }
 
 function piy_enqueuer($type, $items) {
