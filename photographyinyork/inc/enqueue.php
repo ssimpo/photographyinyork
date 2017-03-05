@@ -1,13 +1,29 @@
 <?php
+function piy_register_style($name, $path, $version=PIY_VERSION, $deps=array(), $media='all') {
+	$src = PIY_DIR . $path . '.css';
+	if (!PIY_PAGESPEED) {
+		$src = piy_add_query_param($src, 'ModPagespeed', 'off');
+		$src = piy_add_query_param($src, 'cacheBust', (string) rand());
+	}
+
+	wp_register_style( $name, $path, array(), $version, $media );
+}
+
 function piy_register_lib($name, $path, $version, $deps=array(), $footer=true) {
-	$src = PIY_APP_LIB_DIR . $path . '.' . (PIY_USE_MIN?'min.js':'js');
-	if (!PIY_PAGESPEED) $src = piy_add_query_param($src, 'PageSpeedNoop', (string) rand());
+	$src = PIY_LIB_DIR . $path . '.' . (PIY_USE_MIN?'min.js':'js');
+	if (!PIY_PAGESPEED) {
+		$src = piy_add_query_param($src, 'ModPagespeed', 'off');
+		$src = piy_add_query_param($src, 'cacheBust', (string) rand());
+	}
 	wp_register_script( $name, $src, $deps, $version, $footer );
 }
 
 function piy_register_app_script($name, $path, $deps=array(), $version=PIY_VERSION, $footer=true) {
-	$src = PIY_APP_SCRIPTS_DIR . $path;
-	if (!PIY_PAGESPEED) $src = piy_add_query_param($src, 'PageSpeedNoop', (string) rand());
+	$src = PIY_SCRIPTS_DIR . $path;
+	if (!PIY_PAGESPEED) {
+		$src = piy_add_query_param($src, 'ModPagespeed', 'off');
+		$src = piy_add_query_param($src, 'cacheBust', (string) rand());
+	}
 	wp_register_script( $name, $src, $deps, $version, $footer );
 }
 

@@ -4,14 +4,15 @@ require_once('inc/helper.php');
 require_once('inc/enqueue.php');
 
 function piy_enqueue() {
-	wp_register_style( 'main', PIY_DIR . '/style.css', array(), PIY_VERSION, 'all' );
+	piy_register_style('foundation', PIY_LIB_DIR . '/foundation-sites/dist/css/foundation.min.css', '6.1');
+	piy_register_style('main', PIY_DIR . '/style.css');
 
-	piy_register_lib('react', '/react/react-with-addons', PIY_REACT_VERSION);
-	piy_register_lib('react-dom', '/react/react-dom', PIY_REACT_VERSION);
-	piy_register_app_script('photography-in-york', '/index.js', array('react','react-dom'));
+	wp_deregister_script( 'jquery' );
+	piy_register_lib('jquery', '/jquery/dist/jquery', '3.1.1');
+	piy_register_lib('what-input', '/what-input/dist/what-input', '3.1.1');
 
-	piy_enqueuer('style', array('main'));
-	piy_enqueuer('script', array('react', 'react-dom', 'photography-in-york'));
+	piy_enqueuer('style', array('foundation', 'main'));
+	piy_enqueuer('script', array('jquery', 'what-input', 'foundation'));
 }
 add_action( 'wp_enqueue_scripts', 'piy_enqueue' );
 
