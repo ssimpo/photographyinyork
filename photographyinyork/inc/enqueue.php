@@ -1,9 +1,8 @@
 <?php
 function piy_register_style($name, $path, $version=PIY_VERSION, $deps=array(), $media='all') {
-	$src = PIY_DIR . $path . '.css';
 	if (!PIY_PAGESPEED) {
-		$src = piy_add_query_param($src, 'ModPagespeed', 'off');
-		$src = piy_add_query_param($src, 'cacheBust', (string) rand());
+		$path = piy_add_query_param($path, 'ModPagespeed', 'off');
+		$path = piy_add_query_param($path, 'cacheBust', (string) rand());
 	}
 
 	wp_register_style( $name, $path, array(), $version, $media );
