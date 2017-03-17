@@ -11,11 +11,11 @@
 <body <?php body_class(); ?>>
 <header>
 	<nav class="row">
+		<div class="medium-12 columns">
 		<?php echo wp_nav_menu_split(array(
 			'theme_location'  => 'top',
-			'container'      => false,
 			'menu_class_left' => 'top-menu top-menu-left',
-			'menu_class_right' => 'top-menu top-menu-right',
+			'menu_class_right'=> 'top-menu top-menu-right',
 			'menu_id'         => '',
 			'echo'            => true,
 			'before'          => '',
@@ -28,5 +28,6 @@
 			'balance'         => 'left',
 			'middle_html'     => '<a href="'.get_home_url().'" class="logo-wrap"><img src="'.PIY_DIR.'/images/logo.png" class="logo" /></a>'
 		));?>
+		</div>
 	</nav>
 </header>
