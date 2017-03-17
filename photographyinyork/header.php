@@ -29,6 +29,4 @@
 			'middle_html'     => '<a href="'.get_home_url().'" class="logo-wrap"><img src="'.PIY_DIR.'/images/logo.png" class="logo" /></a>'
 		));?>
 	</nav>
-
-
 </header>

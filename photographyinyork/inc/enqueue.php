@@ -17,8 +17,8 @@ function piy_register_lib($name, $path, $version, $deps=array(), $footer=true) {
 	wp_register_script( $name, $src, $deps, $version, $footer );
 }
 
-function piy_register_app_script($name, $path, $deps=array(), $version=PIY_VERSION, $footer=true) {
-	$src = PIY_SCRIPTS_DIR . $path;
+function piy_register_script($name, $path, $deps=array(), $version=PIY_VERSION, $footer=true) {
+	$src = PIY_SCRIPTS_DIR . $path. '.' . (PIY_USE_MIN?'min.js':'js');
 	if (!PIY_PAGESPEED) {
 		$src = piy_add_query_param($src, 'ModPagespeed', 'off');
 		$src = piy_add_query_param($src, 'cacheBust', (string) rand());
