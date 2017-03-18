@@ -33,10 +33,9 @@ testimonials {
 		text-align: center;
 	}
 
-	.testimonal-by {
+	.ref {
 		position: absolute;
 		bottom: 0;
-		font-size: 1.4em;
 		width: 100%;
 		text-align: right;
 		font-weight: bold;
@@ -64,7 +63,7 @@ slider {
 		z-index: 0;
 	}
 
-	.overlay {
+	testimonials {
 		z-index: 3;
 		position: absolute;
 		bottom: 50px;

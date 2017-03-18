@@ -40,7 +40,12 @@ gulp.task('sass', () => {
 	});
 });
 
-gulp.task('minify', ()=>gulp.src(['./src/scripts/*.js'])
+gulp.task('minify', ()=>gulp.src([
+		'./src/scripts/interval.js',
+		'./src/scripts/slider.js',
+		'./src/scripts/testimonials.js',
+		'./src/scripts/index.js'
+	])
 	//.pipe(debug())
 	.pipe(sourcemaps.init({loadMaps: true}))
 	.pipe(concat('index.js'))

@@ -1,42 +1,16 @@
 <?php get_header(); ?>
 <main>
-	<slider class="row medium-12 columns" interval="3" duration="1" images="https://new.photographyinyork.co.uk/wp-content/uploads/2017/02/cropped-Photography-in-York-Hair-Dressing.jpg,https://new.photographyinyork.co.uk/wp-content/uploads/2017/02/Photography-in-York-Dancer.jpg,https://new.photographyinyork.co.uk/wp-content/uploads/2017/02/Photography-in-York-Weddings-3.jpg,https://new.photographyinyork.co.uk/wp-content/uploads/2017/02/Photogrphy-in-York-Family-Photos-9.jpg">
-		<testimonials class="overlay">
-			<div>
-				<p class="testimonal">Lesent finibus accumsan ipsum, vel auctor diam egestas ac.</p>
-				<p class="testimonal-by">Stephen & Sarah</p>
-			</div>
-			<div>
-				<p class="testimonal">Nunc ultricies orci id efficitur bibendum. Nulla accumsan sodales eleifend.</p>
-				<p class="testimonal-by">Gavin</p>
-			</div>
-			<div>
-				<p class="testimonal">Lesent finibus accumsan ipsum, vel auctor diam egestas ac.</p>
-				<p class="testimonal-by">York College</p>
-			</div>
-		</testimonials>
-	</slider>
+	<?php echo piy_get_slider(array(
+		'class' => 'row medium-12 columns',
+		'interval' => 3,
+		'duration' => 1,
+		'terms' => 'homepage',
+		'content' => piy_get_testimonials()
+	)); ?>
 
 	<article class="home-content row medium-12 columns">
-		<!--div class="row medium-12 columns">
-		</div-->
-		<div class="row">
-		<div class="medium-4 columns">
-			<h2>Party Photographer</h2>
-			<img src="https://new.photographyinyork.co.uk/wp-content/uploads/2017/02/Photography_in_York_Music_Performance.jpg" style="width:100%;height:200px;">
-			<p>Nunc ultricies orci id efficitur bibendum. Nulla accumsan sodales eleifend.</p>
-		</div>
-		<div class="medium-4 columns">
-			<h2>My Photoshoot</h2>
-			<img src="https://new.photographyinyork.co.uk/wp-content/uploads/2017/02/Photography-in-York-Fashion.jpg" style="width:100%;height:200px;">
-			<p>Nunc ultricies orci id efficitur bibendum. Nulla accumsan sodales eleifend.</p>
-		</div>
-		<div class="medium-4 columns">
-			<h2>Family Pictures</h2>
-			<img src="https://new.photographyinyork.co.uk/wp-content/uploads/2017/02/Photogrphy-in-York-Family-Photos-7.jpg" style="width:100%;height:200px;">
-			<p>Nunc ultricies orci id efficitur bibendum. Nulla accumsan sodales eleifend.</p>
-		</div>
-	</div><div class="row medium-12 columns">
+		<div class="row"><?php echo piy_get_section_block(); ?></div>
+			<div class="row medium-12 columns">
 			<p>
 				Nunc ultricies orci id efficitur bibendum. Nulla accumsan sodales eleifend. Phasellus orci nulla, dapibus vel ante quis, sodales rutrum neque. In a volutpat tortor. Cras feugiat neque et lacus ultrices consequat. Nam consequat a mauris et ullamcorper. Nam condimentum ultrices lectus non gravida. Phasellus pellentesque malesuada aliquet. Aliquam ornare nisl et pellentesque tempus. Donec tempor elit a est lobortis ullamcorper. Morbi sapien massa, pellentesque sed finibus nec, elementum vel nisi. Cras ultrices lectus leo, in congue magna maximus ac. Donec lacus tortor, tincidunt eu pretium ac, convallis et sem.
 			</p>
