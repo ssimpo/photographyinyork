@@ -1,7 +1,7 @@
 <?php
 function piy_get_section_block( $atts=array() ) {
 	global $post;
-	$html = '';
+	$html = '<div class="row">';
 
 	$loop = new WP_Query(array(
 		'post_type' => 'page',
@@ -15,7 +15,7 @@ function piy_get_section_block( $atts=array() ) {
 		wp_reset_postdata();
 	}
 
-	return $html .'';
+	return $html .'</div>';
 }
-add_shortcode( 'slider', 'piy_get_section_block' );
+add_shortcode( 'section-block', 'piy_get_section_block' );
 ?>

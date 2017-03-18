@@ -7,29 +7,33 @@
 
 
 	function setMainContentMargins(adminBar=$("#wpadminbar")) {
-		$('.home-content').each((n, _node)=>{
+		let header = $("body>header");
+
+		let adminBarHeight = 0;
+		if (adminBar.length) {
+			adminBarHeight = parseInt(adminBar.outerHeight(), 10);
+			header.css({top: adminBarHeight});
+		}
+
+		$("[shift-content]").each((n, _node)=>{
 			let node = $(_node);
-			let header = $("body>header");
-			let adminBarHeight = 0;
-
-			if (adminBar.length) {
-				adminBarHeight = parseInt(adminBar.outerHeight(), 10);
-				header.css({top: adminBarHeight});
-			}
-
 			if (!setMainContentMargins.initialMargin) {
-				//setMainContentMargins.initialMargin = getOuterboxDimensions(node, "top") + parseInt(header.outerHeight(), 10);
-				//node.css({'margin-top': setMainContentMargins.initialMargin + adminBarHeight});
+				setMainContentMargins.initialMargin = getOuterboxDimensions(node, "top") + parseInt(header.outerHeight(), 10);
+				node.css({'padding-top': setMainContentMargins.initialMargin + adminBarHeight});
 			} else {
-				//node.css({'margin-top': setMainContentMargins.initialMargin + adminBarHeight});
+				node.css({'padding-top': setMainContentMargins.initialMargin + adminBarHeight});
 			}
 		});
 	}
 
 	$(document).ready(()=>{
+		let toggle = -1;
 		global.intervalCallbacks.add(()=>{
 			let adminBar = $("#wpadminbar");
-			if (adminBar.length) setMainContentMargins(adminBar);
+			if (adminBar.length && (adminBar.length !== toggle)) {
+				toggle = adminBar.length;
+				setMainContentMargins(adminBar);
+			}
 		});
 
 		setMainContentMargins();
