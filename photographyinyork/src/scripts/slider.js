@@ -26,8 +26,8 @@
 		$("slider").each((n, _node)=>{
 			let node = $(_node);
 			let height = parseInt((node.width()*9)/16, 10);
-			let duration = parseInt(node.attr("duration") || 1, 10) * 1000;
-			let interval = parseInt(node.attr("interval") || 3, 10) * 10;
+			let duration = parseFloat(node.attr("duration") || 1) * 1000;
+			let interval = parseFloat(node.attr("interval") || 3) * 1000;
 			let images = node.attr("images").split(",");
 			let pos = 1;
 
@@ -39,6 +39,7 @@
 
 			let play = ()=>nextSlide(slideOptions);
 			play.period = interval;
+			play.description = "slider";
 			global.intervalCallbacks.add(play);
 		});
 	}

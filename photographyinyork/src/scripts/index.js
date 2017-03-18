@@ -28,13 +28,15 @@
 
 	$(document).ready(()=>{
 		let toggle = -1;
-		global.intervalCallbacks.add(()=>{
+		let checkAdminBar = ()=>{
 			let adminBar = $("#wpadminbar");
 			if (adminBar.length && (adminBar.length !== toggle)) {
 				toggle = adminBar.length;
 				setMainContentMargins(adminBar);
 			}
-		});
+		};
+		checkAdminBar.period = 100;
+		global.intervalCallbacks.add(checkAdminBar);
 
 		setMainContentMargins();
 	});

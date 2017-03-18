@@ -1,22 +1,40 @@
 (function($, global) {
 	'use strict';
 
-	global.intervalCallbacks = new Set();
-	const intervalPeriod = 100;
-	let intervalCount = 0;
-	let intervalFunc;
+	global.requestAnimationFrame =
+		global.requestAnimationFrame ||
+		global.mozRequestAnimationFrame ||
+		global.webkitRequestAnimationFrame ||
+		global.msRequestAnimationFrame ||
+		function(f){return setTimeout(f, 1000/60)};
 
+	global.cancelAnimationFrame =
+		global.cancelAnimationFrame ||
+		global.mozCancelAnimationFrame ||
+		function(requestID){clearTimeout(requestID)};
+
+	global.intervalCallbacks = new Set();
+
+	let last;
 	(function interval() {
-		if (intervalFunc) global.clearTimeout(intervalFunc);
-		intervalCount++;
+		let now = new Date().getTime();
+		let period = (now - (last || now));
+		last = now;
+
 		global.intervalCallbacks.forEach(callback=>{
-			if (callback.period) {
-				if ((intervalCount % callback.period) === 0) callback();
-			} else {
-				callback();
+			if (callback) {
+				if (callback.period) {
+					callback.currentPeriod = (callback.currentPeriod || 0) + period;
+					if (callback.period <= callback.currentPeriod) {
+						callback.currentPeriod = 0;
+						callback();
+					}
+				} else {
+					callback();
+				}
 			}
 		});
-		intervalFunc = global.setTimeout(interval, intervalPeriod);
+		global.requestAnimationFrame(interval);
 	})();
 
 })(jQuery || $, window);

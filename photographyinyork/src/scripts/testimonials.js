@@ -5,7 +5,7 @@
 		$("testimonials").each((n, _node)=>{
 			let node = $(_node);
 			let _testimonials = node.children();
-			let interval = parseInt(node.attr("interval") || 3, 10) * 10;
+			let interval = parseFloat(node.attr("interval") || 3) * 1000;
 
 			let testimonials = [];
 			_testimonials.each((n, _node)=>{
@@ -22,6 +22,7 @@
 				testimonials[pos].show();
 			};
 			play.period = interval;
+			play.description = "testimonials";
 			global.intervalCallbacks.add(play);
 			play();
 		});
