@@ -41,6 +41,8 @@ gulp.task('sass', () => {
 });
 
 gulp.task('minify', ()=>gulp.src([
+		'./src/scripts/app.js',
+		'./src/scripts/bootstrap.js',
 		'./src/scripts/interval.js',
 		'./src/scripts/slider.js',
 		'./src/scripts/testimonials.js',
