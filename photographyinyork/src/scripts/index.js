@@ -35,7 +35,8 @@
 				setMainContentMargins(adminBar);
 			}
 		};
-		checkAdminBar.period = 100;
+		checkAdminBar.period = 500;
+		checkAdminBar.description = "Check Admin bar";
 		global.intervalCallbacks.add(checkAdminBar);
 
 		setMainContentMargins();

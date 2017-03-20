@@ -26,6 +26,7 @@
 				if (callback.period) {
 					callback.currentPeriod = (callback.currentPeriod || 0) + period;
 					if (callback.period <= callback.currentPeriod) {
+						//if (callback.description) console.log(callback.description, callback.currentPeriod/1000);
 						callback.currentPeriod = 0;
 						callback();
 					}
