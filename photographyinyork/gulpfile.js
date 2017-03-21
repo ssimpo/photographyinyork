@@ -4,7 +4,6 @@ const fs = require('fs');
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-const rebaseUrls = require('gulp-css-rebase-urls');
 const cleanCSS = require('gulp-clean-css');
 const header = require('gulp-header');
 const rename = require("gulp-rename");
@@ -13,6 +12,13 @@ const babel = require("gulp-babel");
 const gutil = require('gulp-util');
 const concat = require('gulp-concat');
 const debug = require('gulp-debug');
+
+const jsBuild = [
+	'./src/scripts/interval.js',
+	'./src/scripts/slider.js',
+	'./src/scripts/testimonials.js',
+	'./src/scripts/index.js'
+];
 
 gulp.task('sass', () => {
 	fs.readFile('./src/header.txt', 'utf8', (err, stylesHeader) => {
@@ -40,20 +46,13 @@ gulp.task('sass', () => {
 	});
 });
 
-gulp.task('minify', ()=>gulp.src([
-		'./src/scripts/app.js',
-		'./src/scripts/bootstrap.js',
-		'./src/scripts/interval.js',
-		'./src/scripts/slider.js',
-		'./src/scripts/testimonials.js',
-		'./src/scripts/index.js'
-	])
+gulp.task('minify', ()=>gulp.src(jsBuild)
 	//.pipe(debug())
 	.pipe(sourcemaps.init({loadMaps: true}))
 	.pipe(concat('index.js'))
 	.pipe(sourcemaps.write('./'))
 	.pipe(gulp.dest('./scripts/'))
-	.on('end', ()=>gulp.src(['./src/scripts/*.js'])
+	.on('end', ()=>gulp.src(jsBuild)
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(concat('index.min.js'))
 		.pipe(babel())
