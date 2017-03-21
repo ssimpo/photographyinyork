@@ -1,6 +1,11 @@
 <footer class="row medium-12 columns">
-	Copyright &copy; and design 2017 by <a href="http://whitebolt.net/templates/photographyinyork">Whitebolt LTD</a>
-	<?php wp_footer(); ?>
+	<div class="footer-main row">
+
+		<?php wp_footer(); ?>
+	</div>
+	<div class="copyright-notice">
+		Copyright and design &copy; 2017 by <a href="http://whitebolt.net/templates/photographyinyork">Whitebolt LTD</a>
+	</div>
 </footer>
 </body>
 </html>

@@ -124,3 +124,18 @@ header nav {
 		text-align: center;
 	}
 }
+
+footer {
+	.copyright-notice {
+		font-size: 0.8em;
+		text-align: center;
+
+		a, a:visited {
+			color: rgba(190, 190, 190, 1);
+
+			&:hover {
+				color: rgba(240, 240, 240, 1);
+			}
+		}
+	}
+}
