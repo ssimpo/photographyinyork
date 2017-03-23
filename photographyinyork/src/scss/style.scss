@@ -1,4 +1,54 @@
+/* cyrillic-ext */
+@font-face {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Ubuntu'), url(https://fonts.gstatic.com/s/ubuntu/v9/ODszJI8YqNw8V2xPulzjO_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+	unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Ubuntu'), url(https://fonts.gstatic.com/s/ubuntu/v9/iQ9VJx1UMASKNiGywyyCXvesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+	unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Ubuntu'), url(https://fonts.gstatic.com/s/ubuntu/v9/WkvQmvwsfw_KKeau9SlQ2_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+	unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Ubuntu'), url(https://fonts.gstatic.com/s/ubuntu/v9/gYAtqXUikkQjyJA1SnpDLvesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+	unicode-range: U+0370-03FF;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Ubuntu'), url(https://fonts.gstatic.com/s/ubuntu/v9/Wu5Iuha-XnKDBvqRwQzAG_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Ubuntu'), url(https://fonts.gstatic.com/s/ubuntu/v9/sDGTilo5QRsfWu6Yc11AXg.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
 body, html {
+	font-family: 'Ubuntu', sans-serif;
 	border: none;
 	margin: 0;
 	padding: 0;
@@ -28,6 +78,14 @@ body>footer {
 
 main {
 	overflow: auto;
+}
+
+h1 {
+	font-size: 1.4em;
+}
+
+h2 {
+	font-size: 1.2em;
 }
 
 testimonials {
@@ -126,16 +184,85 @@ header nav {
 }
 
 footer {
-	.copyright-notice {
-		font-size: 0.8em;
-		text-align: center;
+	.footer-main {
+		background-color: rgba(30, 30, 30, 1);
+		font-size: 1.4em;
 
-		a, a:visited {
+		.footer-main-block1, .footer-main-block2, .footer-main-block3 {
+			line-height: 1.4em;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+
+		.footer-main-block1 {
+			text-align: left;
+			.logo {
+				width: auto;
+				height: 1.2em;
+				margin: 0;
+			}
+		}
+
+		.footer-main-block2 {
+			text-align: center;
+			line-height: 1.4em;
+		}
+
+		.footer-main-block3 {
+			ul {
+				float: right;
+			}
+		}
+	}
+}
+
+.copyright-notice {
+	font-size: 0.6em;
+	text-align: center;
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
+
+	a, a:visited {
+		color: rgba(0, 0, 0, 1);
+
+		&:hover {
+			color: rgba(30, 30, 30, 1);
+		}
+	}
+}
+
+#menu-social.menu>li>a {
+	display: initial;
+	padding: 0.7rem;
+}
+
+#menu-social.menu {
+	&>li>a {
+		display: initial;
+		padding: 0.7rem;
+
+		&, &:visited {
 			color: rgba(190, 190, 190, 1);
 
 			&:hover {
 				color: rgba(240, 240, 240, 1);
 			}
 		}
+	}
+}
+
+.homepage-section-blocks {
+	background-color: rgba(245, 245, 245, 1);
+	margin-bottom: 40px;
+	margin-top: -10px;
+	padding-top: 10px;
+	border-bottom: 1px solid rgba(220, 220, 220, 1);
+
+	h2 {
+		font-size: 1.5em;
+	}
+
+	.columns {
+		text-align: center;
 	}
 }

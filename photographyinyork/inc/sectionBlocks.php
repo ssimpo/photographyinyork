@@ -1,7 +1,7 @@
 <?php
 function piy_get_section_block( $atts=array() ) {
 	global $post;
-	$html = '<div class="row">';
+	$html = '<div class="row homepage-section-blocks">';
 
 	$loop = new WP_Query(array(
 		'post_type' => 'page',

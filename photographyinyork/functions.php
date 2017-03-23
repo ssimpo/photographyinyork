@@ -9,6 +9,8 @@ require_once('inc/sectionBlocks.php');
 
 function piy_enqueue() {
 	piy_register_style('foundation', PIY_LIB_DIR . '/foundation-sites/dist/css/foundation.min.css', '6.3.1');
+	piy_register_style('font-awesome', PIY_LIB_DIR . '/font-awesome/css/font-awesome.min.css');
+	//https://fonts.googleapis.com/css?family=Ubuntu
 	piy_register_style('main', PIY_DIR . '/style.css');
 
 	wp_deregister_script( 'jquery' );
@@ -17,7 +19,7 @@ function piy_enqueue() {
 	piy_register_lib('foundation', '/foundation-sites/dist/js/foundation', '6.3.1', array('what-input'));
 	piy_register_script('piy', '/index', array('jquery', 'foundation'));
 
-	piy_enqueuer('style', array('foundation', 'main'));
+	piy_enqueuer('style', array('foundation', 'font-awesome', 'main'));
 	piy_enqueuer('script', array(
 		'jquery',
 		'what-input',
@@ -33,5 +35,16 @@ function piy_add_excerpts_to_pages() {
 add_action( 'init', 'piy_add_excerpts_to_pages' );
 
 
+function piy_setup() {
+	load_theme_textdomain( 'piy' );
+
+	add_theme_support( 'post-thumbnails' );
+
+	register_nav_menus( array(
+		'top'    => __( 'Top Menu', 'piy' ),
+		'social' => __( 'Social Menu', 'piy' ),
+	) );
+}
+add_action( 'after_setup_theme', 'piy_setup' );
 
 ?>
