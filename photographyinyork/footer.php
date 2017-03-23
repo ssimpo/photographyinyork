@@ -7,7 +7,8 @@
 		<div class="medium-4 columns footer-main-block3">
 			<?php echo wp_nav_menu( array(
 				'theme_location' => 'social',
-				'container' => false
+				'container' => false,
+				'walker' => new piy_walker
 			) ); ?>
 		</div>
 		<?php wp_footer(); ?>

@@ -56,3 +56,43 @@ function wp_nav_menu_split($options) {
 
 	return $html;
 }
+
+
+class piy_custom_menu {
+
+	function __construct() {
+		add_filter( 'wp_setup_nav_menu_item', array( $this, 'piy_add_custom_nav_fields' ) );
+		add_action( 'wp_update_nav_menu_item', array( $this, 'piy_update_custom_nav_fields'), 10, 3 );
+		add_filter( 'wp_edit_nav_menu_walker', array( $this, 'piy_edit_walker'), 10, 2 );
+
+	}
+
+	function piy_add_custom_nav_fields( $menu_item ) {
+		$menu_item->icon = get_post_meta( $menu_item->ID, '_menu-item-icon', true );
+		$menu_item->hide_title = get_post_meta( $menu_item->ID, '_menu-item-hide-title', true );
+		return $menu_item;
+
+	}
+
+	function piy_update_custom_nav_fields( $menu_id, $menu_item_db_id, $args ) {
+		if (!array_key_exists('menu-item-hide-title', $_REQUEST) ) $_REQUEST['menu-item-hide-title'] = array();
+		if ( is_array( $_REQUEST['menu-item-hide-title']) ) {
+			if (!array_key_exists($menu_item_db_id, $_REQUEST['menu-item-hide-title']) ) $_REQUEST['menu-item-hide-title'][$menu_item_db_id] = 'no';
+			$hide_title_value = $_REQUEST['menu-item-hide-title'][$menu_item_db_id];
+			update_post_meta( $menu_item_db_id, '_menu-item-hide-title', $hide_title_value );
+		}
+
+		if ( is_array( $_REQUEST['menu-item-icon']) ) {
+			$icon_value = $_REQUEST['menu-item-icon'][$menu_item_db_id];
+			update_post_meta( $menu_item_db_id, '_menu-item-icon', $icon_value );
+		}
+	}
+
+	function piy_edit_walker($walker,$menu_id) {
+		return 'PIY_Walker_Nav_Menu_Edit';
+	}
+}
+
+$GLOBALS['piy_custom_menu'] = new piy_custom_menu();
+include_once( 'menu/edit_custom_walker.php' );
+include_once( 'menu/custom_walker.php' );
