@@ -1,5 +1,5 @@
 (function($, global) {
-	'use strict';
+	"use strict";
 
 	function createSliderImage(options) {
 		return $("<img class=\"slider-image-"+options.no+"\">")

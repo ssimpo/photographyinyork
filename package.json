@@ -36,6 +36,7 @@
         "./src/scripts/interval.js",
         "./src/scripts/slider.js",
         "./src/scripts/testimonials.js",
+        "./src/scripts/gallery.js",
         "./src/scripts/index.js"
       ],
       "styles": [

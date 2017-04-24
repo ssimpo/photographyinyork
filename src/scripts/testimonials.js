@@ -1,5 +1,5 @@
 (function($, global) {
-	'use strict';
+	"use strict";
 
 	function applyTestimonial() {
 		$("testimonials").each((n, _node)=>{
