@@ -1,5 +1,7 @@
 'use strict';
 
+const config = require('./package.json');
+const sftpConfig = require('./sftp.json');
 const fs = require('fs');
 const gulp = require('gulp');
 const sass = require('gulp-sass');
@@ -12,52 +14,53 @@ const babel = require("gulp-babel");
 const gutil = require('gulp-util');
 const concat = require('gulp-concat');
 const debug = require('gulp-debug');
+const sftp = require('gulp-sftp-new');
 
-const jsBuild = [
-	'./src/scripts/interval.js',
-	'./src/scripts/slider.js',
-	'./src/scripts/testimonials.js',
-	'./src/scripts/index.js'
-];
+
+config.gulp.deployment = {
+	"scripts": Object.assign({}, config.gulp.deployment, {
+		remotePath: config.gulp.deployment.remotePath + '/' + config.gulp.build.scripts
+	}, sftpConfig),
+	"styles": Object.assign({}, config.gulp.deployment, {
+		remotePath: config.gulp.deployment.remotePath + '/' + config.gulp.build.styles
+	}, sftpConfig)
+};
 
 gulp.task('sass', () => {
 	fs.readFile('./src/header.txt', 'utf8', (err, stylesHeader) => {
 		if (err) throw err;
 
-		gulp.src(['./src/scss/*.scss'])
+		gulp.src(config.gulp.source.styles)
 			.pipe(sourcemaps.init())
-			.pipe(sass({
-				outputStyle: 'compressed',
-				includePaths: ['./lib/foundation-sites/scss']
-			}).on('error', gutil.log))
-			//.pipe(rebaseUrls())
-			.pipe(cleanCSS({
-				advanced: true,
-				keppSpecialComments: 0,
-				restructuring: true
-			}))
+			.pipe(sass(config.gulp.build.sass).on('error', gutil.log))
+			.pipe(cleanCSS(config.gulp.build.cleanCss))
 			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest('./'))
-			.on('end', ()=>{
-				gulp.src(['./style.css'])
-					.pipe(header(stylesHeader))
-					.pipe(gulp.dest('./'))
-			})
+			.pipe(gulp.dest(config.gulp.build.styles))
+			.pipe(sftp(config.gulp.deployment.styles))
+			.on('end', ()=>gulp.src(['./style.css'])
+				.pipe(header(stylesHeader))
+				.pipe(gulp.dest('./'))
+				.pipe(sftp(config.gulp.deployment.styles))
+			);
 	});
 });
 
-gulp.task('minify', ()=>gulp.src(jsBuild)
+gulp.task('minify', ()=>gulp.src(config.gulp.source.scripts)
 	//.pipe(debug())
 	.pipe(sourcemaps.init({loadMaps: true}))
-	.pipe(concat('index.js'))
+	.pipe(concat((config.gulp.build.index || 'index') + '.js'))
 	.pipe(sourcemaps.write('./'))
-	.pipe(gulp.dest('./scripts/'))
-	.on('end', ()=>gulp.src(jsBuild)
+	.pipe(gulp.dest(config.gulp.build.scripts))
+	.pipe(sftp(config.gulp.deployment.scripts))
+	.on('end', ()=>gulp.src(config.gulp.source.scripts)
 		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(concat('index.min.js'))
+		.pipe(concat((config.gulp.build.index || 'index') + '.min.js'))
 		.pipe(babel())
 		.pipe(uglify().on('error', gutil.log))
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('./scripts/'))
+		.pipe(gulp.dest(config.gulp.build.scripts))
+		.pipe(sftp(config.gulp.deployment.scripts))
 	)
 );
+
+gulp.task('build', ['minify', 'sass']);

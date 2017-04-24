@@ -6,6 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "babel-preset-es2015": "*",
+    "const": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "*",
     "gulp-clean-css": "^2.0.3",
@@ -15,6 +16,7 @@
     "gulp-json-editor": "^2.2.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.2.0",
+    "gulp-sftp-new": "^0.1.8",
     "gulp-sourcemaps": "*",
     "gulp-uglify": "*",
     "gulp-util": "^3.0.7"
@@ -23,5 +25,37 @@
     "presets": [
       "es2015"
     ]
+  },
+  "gulp": {
+    "deployment": {
+      "host": "moses.whitebolt",
+      "remotePath": "/var/www/michaeljlester/www/photographyinyork.co.uk/wp-content/themes/photographyinyork"
+    },
+    "source": {
+      "scripts": [
+        "./src/scripts/interval.js",
+        "./src/scripts/slider.js",
+        "./src/scripts/testimonials.js",
+        "./src/scripts/index.js"
+      ],
+      "styles": [
+        "./src/styles/*.scss"
+      ]
+    },
+    "build": {
+      "scripts": "scripts/",
+      "styles": "",
+      "cleanCss": {
+        "advanced": true,
+        "keppSpecialComments": 0,
+        "restructuring": true
+      },
+      "sass": {
+        "outputStyle": "compressed",
+        "includePaths": [
+          "./lib/foundation-sites/scss"
+        ]
+      }
+    }
   }
 }
