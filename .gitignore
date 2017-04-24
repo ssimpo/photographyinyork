@@ -1,5 +1,6 @@
-twentyfifteen/
-twentyseventeen/
-twentysixteen/
-phtographyinyork/node_modules/
+node_modules/
+lib/
 .idea/
+scripts/
+style.css
+style.css.map
