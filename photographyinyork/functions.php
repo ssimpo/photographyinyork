@@ -10,7 +10,6 @@ require_once('inc/sectionBlocks.php');
 function piy_enqueue() {
 	piy_register_style('foundation', PIY_LIB_DIR . '/foundation-sites/dist/css/foundation.min.css', '6.3.1');
 	piy_register_style('font-awesome', PIY_LIB_DIR . '/font-awesome/css/font-awesome.min.css');
-	//https://fonts.googleapis.com/css?family=Ubuntu
 	piy_register_style('main', PIY_DIR . '/style.css');
 
 	wp_deregister_script( 'jquery' );
