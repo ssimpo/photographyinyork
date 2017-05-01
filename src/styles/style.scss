@@ -282,8 +282,7 @@ gallery {
 	position: relative;
 
 	a {
-		display: block;
-		float: left;
+		display: inline-block;
 		position: relative;
 
 		.overlay {
