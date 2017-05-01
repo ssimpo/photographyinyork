@@ -26,28 +26,38 @@
 
 
 		rows.forEach(row=>{
-			const _height = 100;
-			let _width = 0;
 			let _rowWidth = rowWidth - (gutter * (row.length-1));
+			if (row.length === 1) _rowWidth /= 2;
 
-			row.forEach(img=>{
-				let aspect = aspectStringToValues(img.attr("aspect"), "object");
-				_width += (aspect.width/aspect.height) * _height;
-			});
-
-			let _aspect = aspect(_width, _height, "object");
+			let _aspect = calcRowAspect(row);
 			let height = parseInt((_rowWidth < _aspect.width) ?
 				(_rowWidth/_aspect.width)*_aspect.height :
 				(_aspect.width/_rowWidth)*_aspect.height
 			, 10);
 
 			row.forEach((img, n)=>{
-				let aspect = aspectStringToValues(img.attr("aspect"), "object");
-				img.attr("height", height);
-				img.attr("width", parseInt((height/aspect.height) * aspect.width));
+				let _aspect = aspectStringToValues(img.attr("aspect"), "object");
+				let width = parseInt((height/_aspect.height) * _aspect.width);
+				setImageWidthHeight(img, width, height);
 				if (n === (row.length - 1)) img.addClass("last");
 			});
 		});
+	}
+
+	function calcRowAspect(row, height=100, returnType="object") {
+		let width = 0;
+		row.forEach(img=>{
+			let aspect = aspectStringToValues(img.attr("aspect"), "object");
+			width += (aspect.width/aspect.height) * height;
+		});
+
+		return aspect(width, height, returnType);
+	}
+
+	function setImageWidthHeight(img, width, height) {
+		img.attr("height", height);
+		img.attr("width", width);
+		img.css({width, height});
 	}
 
 	function aspectStringToValues(aspect, returnType="array") {
