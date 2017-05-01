@@ -5,3 +5,5 @@ scripts/
 style.css
 style.css.map
 sftp.json
+!src/scripts/
+!/src/styles/
