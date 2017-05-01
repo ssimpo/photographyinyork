@@ -312,6 +312,10 @@ gallery {
 	img {
 		margin-right: $spacer;
 		margin-bottom: $spacer;
+
+		&.last {
+			margin-right: 0;
+		}
 	}
 
 	&.layout-1 img {

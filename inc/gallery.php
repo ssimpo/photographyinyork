@@ -3,6 +3,7 @@ function piy_get_gallery_start( $atts = array() ) {
 	$html = '<gallery';
 
 	$html .= array_key_exists('class', $atts) ? ' class="' . $atts['class'] . '"' : '';
+	$html .= array_key_exists('cols', $atts) ? ' cols="' . $atts['cols'] . '"' : '';
 	$html .= '>';
 
 	return $html;
