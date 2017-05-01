@@ -94,11 +94,9 @@ h2 {
 .hidden {
 	display: block;
 	left: 0;
-	height: 1px;
 	overflow: hidden;
 	position: absolute;
 	top: 0;
-	width: 1px;
 	visibility: hidden;
 	z-index: -9999;
 }
@@ -264,7 +262,25 @@ footer {
 	}
 }
 
+.featherlight-content {
+	position: relative;
+
+	.overlay {
+		bottom: $spacer * 2;
+		background-color: $overlayBackground;
+		color: #fdfdfd;
+		font-size: $spacer * 1.5;
+		height: $spacer *4;
+		left: $spacer * 3;
+		padding: $spacer;
+		padding-top: $spacer;
+		position: absolute;
+	}
+}
+
 gallery {
+	position: relative;
+
 	a {
 		display: block;
 		float: left;
@@ -348,4 +364,19 @@ gallery {
 		content: " ";
 		display: block;
 	}
+}
+
+main>gallery {
+	padding-right: $spacer;
+
+	img {
+		margin-left: $spacer;
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+}
+
+.featherlight-image.featherlight-inner {
+	max-height: 90vh;
+	max-width: 90vw;
 }

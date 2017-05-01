@@ -5,6 +5,7 @@ require_once('inc/menu.php');
 require_once('inc/enqueue.php');
 require_once('inc/testimonials.php');
 require_once('inc/slider.php');
+require_once('inc/gallery.php');
 require_once('inc/sectionBlocks.php');
 
 function piy_enqueue() {
