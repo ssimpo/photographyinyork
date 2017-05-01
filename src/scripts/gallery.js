@@ -2,10 +2,9 @@
 	"use strict";
 
 	function resizeToFitRows(gallery) {
-		let rowWidth = gallery.parent().width();
+		let rowWidth = gallery.width();
 		let colsPerRow = parseFloat(gallery.attr("cols") || 4);
-		let rows = [[]];
-		let cRow = 0;
+		let rows = [];
 		let cColCount = 0;
 		let gutter = 10;
 
@@ -13,28 +12,18 @@
 			let img = $(node);
 			let cols = parseFloat(img.attr("cols"));
 
-			if ((cColCount+cols) > colsPerRow) {
-				cRow++;
+			if ((n === 0) || ((cColCount+cols) > colsPerRow)) {
 				rows.push([]);
 				cColCount = cols;
 			} else {
 				cColCount += cols;
 			}
 
-			rows[cRow].push(img);
+			rows[rows.length-1].push(img);
 		});
 
-
 		rows.forEach(row=>{
-			let _rowWidth = rowWidth - (gutter * (row.length-1));
-			if (row.length === 1) _rowWidth /= 2;
-
-			let _aspect = calcRowAspect(row);
-			let height = parseInt((_rowWidth < _aspect.width) ?
-				(_rowWidth/_aspect.width)*_aspect.height :
-				(_aspect.width/_rowWidth)*_aspect.height
-			, 10);
-
+			let height = calcRowHeight(row, rowWidth, gutter);
 			row.forEach((img, n)=>{
 				let _aspect = aspectStringToValues(img.attr("aspect"), "object");
 				let width = parseInt((height/_aspect.height) * _aspect.width);
@@ -42,6 +31,16 @@
 				if (n === (row.length - 1)) img.addClass("last");
 			});
 		});
+	}
+
+	function calcRowHeight(row, rowWidth, gutter) {
+		let _rowWidth = rowWidth - (gutter * (row.length-1));
+		if (row.length === 1) _rowWidth /= 2;
+		let aspect = calcRowAspect(row);
+		return parseInt((_rowWidth < aspect.width) ?
+			(_rowWidth/aspect.width)*aspect.height :
+			(aspect.width/_rowWidth)*aspect.height
+		, 10);
 	}
 
 	function calcRowAspect(row, height=100, returnType="object") {
