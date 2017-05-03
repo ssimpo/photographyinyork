@@ -1,5 +1,8 @@
-gallery {
+.gallery-parent, gallery {
 	background-color: $contentBackground;
+}
+
+gallery {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;

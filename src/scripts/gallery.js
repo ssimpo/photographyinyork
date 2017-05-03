@@ -105,6 +105,12 @@
 		gallery.each((n, node)=>{
 			let gallery = $(node);
 
+			if (gallery.attr("parent-class")) $("<div></div>")
+				.addClass(gallery.attr("parent-class"))
+				.addClass("gallery-parent")
+				.insertAfter(gallery)
+				.append(gallery);
+
 			gallery.find("img").each((n, node)=>{
 				let img = $(node);
 				let width = img.attr("width");
@@ -116,6 +122,8 @@
 
 				if (img.attr("height")) img.removeAttr("height");
 				if (img.attr("width")) img.removeAttr("width");
+				img.removeClass("aligncenter alignleft alignright alignnone");
+
 				if (img.parent().prop("tagName").toLowerCase() !== "a") $("<a></a>")
 					.attr("href", img.attr("src"))
 					.insertAfter(img)

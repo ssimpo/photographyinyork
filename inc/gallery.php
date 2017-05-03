@@ -3,7 +3,7 @@ function piy_get_gallery_start( $atts = array() ) {
 	$html = '<gallery';
 
 	$atts_to_copy = array(
-		'class',
+		'class', 'parent-class',
 		'cols', 'cols-xxlarge', 'cols-xlarge', 'cols-large', 'cols-medium', 'cols-small',
 		'gutter', 'gutter-xxlarge', 'gutter-xlarge', 'gutter-large', 'gutter-medium', 'gutter-small'
 	);
