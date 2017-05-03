@@ -101,8 +101,8 @@
 		return 2;
 	}
 
-	function applyGallery() {
-		$("gallery").each((n, node)=>{
+	function applyGallery(gallery=this) {
+		gallery.each((n, node)=>{
 			let gallery = $(node);
 
 			gallery.find("img").each((n, node)=>{
@@ -153,6 +153,8 @@
 		});
 	}
 
-	$(document).ready(()=>applyGallery());
+	$.fn.piyGallery = applyGallery;
+
+	$(document).ready(()=>$("gallery").piyGallery());
 
 })(jQuery || $, window);

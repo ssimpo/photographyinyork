@@ -1,8 +1,8 @@
 (function($, global) {
 	"use strict";
 
-	function applyTestimonial() {
-		$("testimonials").each((n, _node)=>{
+	function applyTestimonial(testimonials=this) {
+		testimonials.each((n, _node)=>{
 			let node = $(_node);
 			let _testimonials = node.children();
 			let interval = parseFloat(node.attr("interval") || 3) * 1000;
@@ -28,6 +28,8 @@
 		});
 	}
 
-	$(document).ready(()=>applyTestimonial());
+	$.fn.piyTestimonials = applyTestimonial;
+
+	$(document).ready(()=>$("testimonials").piyTestimonials());
 
 })(jQuery || $, window);

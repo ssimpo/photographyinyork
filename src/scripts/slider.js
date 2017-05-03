@@ -22,8 +22,8 @@
 		}});
 	}
 
-	function applySlider() {
-		$("slider").each((n, _node)=>{
+	function applySlider(sliders=this) {
+		sliders.each((n, _node)=>{
 			let node = $(_node);
 			let height = parseInt((node.width()*9)/16, 10);
 			let duration = parseFloat(node.attr("duration") || 1) * 1000;
@@ -44,6 +44,8 @@
 		});
 	}
 
-	$(document).ready(()=>applySlider());
+	$.fn.piySlider = applySlider;
+
+	$(document).ready(()=>$("slider").piySlider());
 
 })(jQuery || $, window);
