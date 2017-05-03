@@ -37,6 +37,7 @@
         "./src/scripts/slider.js",
         "./src/scripts/testimonials.js",
         "./src/scripts/gallery.js",
+        "./src/scripts/moveOn.js",
         "./src/scripts/index.js"
       ],
       "styles": [

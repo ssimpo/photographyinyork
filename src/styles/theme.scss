@@ -11,7 +11,7 @@ body, html {
 	width: 100%;
 }
 
-body>header {
+.off-canvas-content>header, body>header {
 	background-color: $overlayBackground;
 	position: fixed;
 	top: 0;
@@ -19,7 +19,7 @@ body>header {
 	z-index: 9999;
 }
 
-body>footer {
+.off-canvas-content>footer, body>footer {
 	background-color: $footerBackground;
 	color: $white;
 }
@@ -27,7 +27,7 @@ body>footer {
 .logo {
 	margin-top: $spacer * 1.5;
 	margin-bottom: $spacer;
-	width: 80%;
+	width: 100%;
 }
 
 main {
@@ -59,6 +59,35 @@ main article {
 	width: 100%;
 }
 
+#off-canvas-content {
+	.top-menu {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+
+		li {
+			background-color: $white;
+			color: $black;
+			margin: 0;
+			padding: 0;
+
+			&:hover, a:hover {
+				background-color: $darkGrey;
+				color: $white;
+			}
+
+			a {
+				color: $black;
+				display: block;
+				height: 100%;
+				padding: $spacer;
+				border-bottom: 1px solid $mediumGrey;
+				width: 100%;
+			}
+		}
+	}
+}
+
 header nav {
 	display: table;
 
@@ -66,17 +95,27 @@ header nav {
 		display: table-cell;
 		margin: 0;
 		vertical-align: middle;
+
 		width: 40%;
 
-		&.top-menu-right {
+		@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+			font-size: 75%;
+		}
+
+		&.top-menu-left {
 			text-align: right;
+		}
+
+		&.top-menu-right {
+			text-align: left;
 		}
 
 		li {
 			color: $white;
 			display: inline-block;
 			font-weight: 600;
-			margin-right: $spacer * 2;
+			margin-right: $spacer;
+			margin-left: $spacer;
 			text-align: center;
 
 			a, a:hover {
@@ -86,11 +125,20 @@ header nav {
 		}
 	}
 
+	.menu-button-wrapper {
+		display: table-cell;
+		text-align: left;
+		vertical-align: middle;
+		width: 10%;
+	}
+
 	.logo-wrap {
 		display: table-cell;
+		padding-left: $spacer;
+		padding-right: $spacer;
 		text-align: center;
 		vertical-align: middle;
-		width: 30%;
+		width: 20%;
 	}
 }
 

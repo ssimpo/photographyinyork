@@ -5,6 +5,8 @@
 		<?php echo $header_block; ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 			<article<?php echo (($header_block == '') ? ' shift-content' : ''); ?> class="row medium-12 columns">
+				<div class="small-overlay show-for-small-only"></div>
+				<hr class="show-for-small-only">
 				<?php get_template_part('title'); ?>
 				<?php the_content(); ?>
 			</article>

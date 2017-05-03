@@ -7,7 +7,7 @@
 
 
 	function setMainContentMargins(adminBar=$("#wpadminbar")) {
-		let header = $("body>header");
+		let header = $(".off-canvas-content>header,body>header");
 
 		let adminBarHeight = 0;
 		if (adminBar.length) {
@@ -21,7 +21,11 @@
 				setMainContentMargins.initialMargin = getOuterboxDimensions(node, "top") + parseInt(header.outerHeight(), 10);
 			}
 
-			node.css({'padding-top': setMainContentMargins.initialMargin});
+			if (node.attr("shift-content") === "include-admin") {
+				node.css({'padding-top': setMainContentMargins.initialMargin + adminBarHeight});
+			} else {
+				node.css({'padding-top': setMainContentMargins.initialMargin});
+			}
 		});
 	}
 
@@ -41,7 +45,6 @@
 			} else {
 				overlay.css("font-size", node._originalFontSize);
 			}
-			console.log(node._originalFontSize);
 
 			overlay.find("*").each((n, node)=>{
 				let child = $(node);

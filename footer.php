@@ -17,5 +17,7 @@
 <div class="copyright-notice">
 	Copyright and design &copy; 2017 by <a href="http://whitebolt.net/templates/photographyinyork">Whitebolt LTD</a>
 </div>
+</div>
+</div>
 </body>
 </html>
