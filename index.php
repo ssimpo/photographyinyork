@@ -5,10 +5,7 @@
 		<?php echo $header_block; ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 			<article<?php echo (($header_block == '') ? ' shift-content' : ''); ?> class="row medium-12 columns">
-				<?php if (($hide_title != "1") && (!defined('TITLE_DONE'))) { ?>
-					<h1><?php the_title(); ?></h1>
-					<?php define('TITLE_DONE', true); ?>
-				<?php } ?>
+				<?php get_template_part('title'); ?>
 				<?php the_content(); ?>
 			</article>
 		<?php endwhile; ?>
