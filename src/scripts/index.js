@@ -32,6 +32,28 @@
 		});
 	}
 
+	function fixOverlayOverflow() {
+		$(".overlay").each((n, node)=>{
+			let overlay = $(node);
+			let bottom = overlay.position().top + overlay.height();
+			if (!node._originalFontSize) {
+				node._originalFontSize = overlay.css("font-size");
+			} else {
+				overlay.css("font-size", node._originalFontSize);
+			}
+			console.log(node._originalFontSize);
+
+			overlay.find("*").each((n, node)=>{
+				let child = $(node);
+				let breakout = 50;
+				while ((breakout > 0) && ((child.position().top + child.height()) > bottom)) {
+					breakout--;
+					overlay.css("font-size", (parseInt(overlay.css("font-size"), 10) - 1) + "px");
+				}
+			});
+		});
+	}
+
 	let $doc = $(document);
 
 	$doc.foundation();
@@ -49,6 +71,9 @@
 		checkAdminBar.period = 500;
 		checkAdminBar.description = "Check Admin bar";
 		global.intervalCallbacks.add(checkAdminBar);
+
+		fixOverlayOverflow();
+		$(global).resize(fixOverlayOverflow);
 
 		setMainContentMargins();
 	});
