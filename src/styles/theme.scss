@@ -3,6 +3,7 @@
 body, html {
 	background-color: $bodyBackround;
 	border: none;
+	color: white;
 	font-family: 'Ubuntu', sans-serif;
 	height: 100%;
 	margin: 0;
@@ -20,7 +21,7 @@ body>header {
 
 body>footer {
 	background-color: $footerBackground;
-	color: rgba(255, 255, 255, 1);
+	color: $white;
 }
 
 .logo {
@@ -53,7 +54,7 @@ h2 {
 
 main article {
 	background-color: $contentBackground;
-	color: black;
+	color: $black;
 	padding-top: $spacer;
 	width: 100%;
 }
@@ -72,14 +73,14 @@ header nav {
 		}
 
 		li {
-			color: white;
+			color: $white;
 			display: inline-block;
 			font-weight: 600;
 			margin-right: $spacer * 2;
 			text-align: center;
 
 			a, a:hover {
-				color: white;
+				color: $white;
 				font-weight: 600;
 			}
 		}
@@ -95,7 +96,7 @@ header nav {
 
 footer {
 	.footer-main {
-		background-color: rgba(30, 30, 30, 1);
+		background-color: $black;
 		font-size: 1.4em;
 
 		.footer-main-block1, .footer-main-block2, .footer-main-block3 {
@@ -134,10 +135,10 @@ footer {
 	text-align: center;
 
 	a, a:visited {
-		color: rgba(0, 0, 0, 1);
+		color: $black;
 
 		&:hover {
-			color: rgba(30, 30, 30, 1);
+			color: lighten($black, 10%);
 		}
 	}
 }
@@ -153,18 +154,18 @@ footer {
 		padding: 0.7rem;
 
 		&, &:visited {
-			color: rgba(190, 190, 190, 1);
+			color: $mediumGrey;
 
 			&:hover {
-				color: rgba(240, 240, 240, 1);
+				color: lighten($mediumGrey, 20%);
 			}
 		}
 	}
 }
 
 .homepage-section-blocks {
-	background-color: rgba(245, 245, 245, 1);
-	border-bottom: 1px solid rgba(220, 220, 220, 1);
+	background-color: $lightGrey;
+	border-bottom: 1px solid $grey;
 	margin-bottom: $spacer * 4;
 	margin-top: $spacer * -1;
 	padding-top: $spacer;

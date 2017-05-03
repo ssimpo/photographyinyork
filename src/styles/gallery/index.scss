@@ -10,21 +10,18 @@ gallery {
 		position: relative;
 
 		.overlay {
+			@include overlay();
 			bottom: $spacer * 2;
-			background-color: $overlayBackground;
-			color: #fdfdfd;
 			font-size: $spacer * 1.5;
 			height: $spacer *4;
 			left: $spacer;
 			padding: $spacer;
-			padding-top: $spacer;
-			position: absolute;
 		}
 
 		&:hover {
 			.overlay {
 				background-color: rgba($overlayBackground, 1);
-				color: #ffffff;
+				color: $white;
 			}
 
 			img {
