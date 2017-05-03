@@ -11,5 +11,7 @@
 				<?php the_content(); ?>
 			</article>
 		<?php endwhile; ?>
+		<?php $footer_block = types_render_field( 'footer-block', array('output' => 'raw')); ?>
+		<?php echo $footer_block; ?>
 	</main>
 <?php get_footer();

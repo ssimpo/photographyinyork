@@ -2,8 +2,16 @@
 function piy_get_gallery_start( $atts = array() ) {
 	$html = '<gallery';
 
-	$html .= array_key_exists('class', $atts) ? ' class="' . $atts['class'] . '"' : '';
-	$html .= array_key_exists('cols', $atts) ? ' cols="' . $atts['cols'] . '"' : '';
+	$atts_to_copy = array(
+		'class',
+		'cols', 'cols-xxlarge', 'cols-xlarge', 'cols-large', 'cols-medium', 'cols-small',
+		'gutter', 'gutter-xxlarge', 'gutter-xlarge', 'gutter-large', 'gutter-medium', 'gutter-small'
+	);
+
+	foreach($atts_to_copy as $att) {
+		$html .= array_key_exists($att, $atts) ? ' '.$att.'="' . $atts[$att] . '"' : '';
+	}
+
 	$html .= '>';
 
 	return $html;

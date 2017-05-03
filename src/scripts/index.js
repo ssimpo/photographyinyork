@@ -26,7 +26,10 @@
 		});
 	}
 
-	$(document).ready(()=>{
+	let $doc = $(document);
+
+	$doc.foundation();
+	$doc.ready(()=>{
 		let toggle = -1;
 		let checkAdminBar = ()=>{
 			let adminBar = $("#wpadminbar");
