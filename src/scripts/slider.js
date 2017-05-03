@@ -28,7 +28,21 @@
 			let height = parseInt((node.width()*9)/16, 10);
 			let duration = parseFloat(node.attr("duration") || 1) * 1000;
 			let interval = parseFloat(node.attr("interval") || 3) * 1000;
-			let images = node.attr("images").split(",");
+			let images = (node.attr("images") || "").split(",");
+
+			node.find("img:not([slider-exclude],.slider-exclude)").each((n, node)=>{
+				let img = $(node);
+				images.push(img.attr("src"));
+
+				if (img.parent().prop("tagName").toLowerCase() === "a") {
+					img.parent().remove();
+				} else {
+					img.remove();
+				}
+			});
+
+			images = images.filter(src=>(src.trim()!==""));
+
 			let pos = 1;
 
 			node.css({height});
