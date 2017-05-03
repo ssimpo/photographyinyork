@@ -25,7 +25,9 @@ function piy_get_slider( $atts ) {
 	$html .= array_key_exists('interval', $atts) ? ' interval="' . $atts['interval'] . '"' : ' interval="3"';
 	$html .= array_key_exists('duration', $atts) ? ' duration="' . $atts['duration'] . '"' : ' duration="1"';
 	$html .= ' images="' . implode(',', $sliderImages) . '">';
-	$html .= array_key_exists('content', $atts) ? do_shortcode(str_replace(array('<%','%>'), array('[', ']'), $atts['content'])) : '';
+	$html .= array_key_exists('content', $atts) ?
+		do_shortcode(str_replace(array('<%','%>','&lt;%','%&gt;'), array('[',']','[',']'), $atts['content'])) :
+		'';
 	$html .= '</slider>';
 
 	return $html;

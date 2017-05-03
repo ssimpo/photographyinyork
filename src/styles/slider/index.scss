@@ -30,4 +30,18 @@ slider {
 		width: 45%;
 		z-index: 3;
 	}
+
+	.overlay {
+		background-color: $overlayBackground;
+		border-radius: $spacer/2;
+		color: rgba(255, 255,255, 1);
+		right: 0;
+		height: 100%;
+		overflow: hidden;
+		padding: 20px;
+		position: absolute;
+		top: 0;
+		width: 45%;
+		z-index: 3;
+	}
 }
