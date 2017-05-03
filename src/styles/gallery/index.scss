@@ -1,0 +1,44 @@
+gallery {
+	background-color: $contentBackground;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	position: relative;
+
+	a {
+		display: inline-block;
+		position: relative;
+
+		.overlay {
+			bottom: $spacer * 2;
+			background-color: $overlayBackground;
+			color: #fdfdfd;
+			font-size: $spacer * 1.5;
+			height: $spacer *4;
+			left: $spacer;
+			padding: $spacer;
+			padding-top: $spacer;
+			position: absolute;
+		}
+
+		&:hover {
+			.overlay {
+				background-color: rgba($overlayBackground, 1);
+				color: #ffffff;
+			}
+
+			img {
+				opacity: 0.7;
+			}
+		}
+	}
+
+	img {
+		margin-right: $spacer;
+		margin-bottom: $spacer;
+
+		&.last {
+			margin-right: 0;
+		}
+	}
+}

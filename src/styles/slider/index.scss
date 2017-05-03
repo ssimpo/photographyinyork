@@ -1,0 +1,33 @@
+slider {
+	display: block;
+	position: relative;
+
+	img.slider-image-1, img.slider-image-2 {
+		display: block;
+		left: 0;
+		position: absolute;
+		top: 0;
+	}
+
+	img.slider-image-1 {
+		z-index: 1;
+	}
+
+	img.slider-image-2 {
+		z-index: 0;
+	}
+
+	testimonials {
+		background-color: $overlayBackground;
+		border-radius: $spacer/2;
+		bottom: $spacer * 5;
+		color: rgba(255, 255,255, 1);
+		left: $spacer * 54;
+		height: 35%;
+		overflow: hidden;
+		padding: 20px;
+		position: absolute;
+		width: 45%;
+		z-index: 3;
+	}
+}

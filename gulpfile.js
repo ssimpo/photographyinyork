@@ -34,6 +34,7 @@ gulp.task('sass', () => {
 			.pipe(sourcemaps.init())
 			.pipe(sass(config.gulp.build.sass).on('error', gutil.log))
 			.pipe(cleanCSS(config.gulp.build.cleanCss))
+			.pipe(rename(path=>{path.basename = config.gulp.build.styleRename}))
 			.pipe(sourcemaps.write('./'))
 			.pipe(gulp.dest(config.gulp.build.styles))
 			.pipe(sftp(config.gulp.deployment.styles))

@@ -40,12 +40,13 @@
         "./src/scripts/index.js"
       ],
       "styles": [
-        "./src/styles/*.scss"
+        "./src/styles/index.scss"
       ]
     },
     "build": {
       "scripts": "scripts/",
       "styles": "",
+      "styleRename": "style",
       "cleanCss": {
         "advanced": true,
         "keppSpecialComments": 0,
