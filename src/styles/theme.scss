@@ -182,15 +182,12 @@ footer {
 	position: relative;
 
 	.overlay {
+		@include overlay();
 		bottom: $spacer * 2;
-		background-color: $overlayBackground;
-		color: #fdfdfd;
 		font-size: $spacer * 1.5;
 		height: $spacer *4;
 		left: $spacer * 3;
 		padding: $spacer;
-		padding-top: $spacer;
-		position: absolute;
 	}
 }
 

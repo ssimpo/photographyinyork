@@ -18,29 +18,19 @@ slider {
 	}
 
 	testimonials {
-		background-color: $overlayBackground;
+		@include overlay();
 		border-radius: $spacer/2;
 		bottom: $spacer * 5;
-		color: rgba(255, 255,255, 1);
 		left: $spacer * 54;
 		height: 35%;
-		overflow: hidden;
-		padding: 20px;
-		position: absolute;
 		width: 45%;
-		z-index: 3;
 	}
 
 	.overlay {
-		background-color: $overlayBackground;
-		color: rgba(255, 255,255, 1);
+		@include overlay();
 		right: 0;
 		height: 100%;
-		overflow: hidden;
-		padding: 20px;
-		position: absolute;
 		top: 0;
 		width: 45%;
-		z-index: 3;
 	}
 }
