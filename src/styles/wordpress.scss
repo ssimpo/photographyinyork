@@ -1,32 +1,31 @@
 /* =WordPress Core
 -------------------------------------------------------------- */
 .alignnone {
-	margin: 5px 20px 20px 0;
+	margin: $spacer/2 $spacer*2 $spacer*2 0;
 }
 
-.aligncenter,
-div.aligncenter {
+.aligncenter, div.aligncenter {
 	display: block;
-	margin: 5px auto 5px auto;
+	margin: $spacer/2 auto $spacer/2 auto;
 }
 
 .alignright {
 	float:right;
-	margin: 5px 0 20px 20px;
+	margin: $spacer/2 0 $spacer*2 $spacer*2;
 }
 
 .alignleft {
 	float: left;
-	margin: 5px 20px 20px 0;
+	margin: $spacer/2 $spacer*2 $spacer*2 0;
 }
 
 a img.alignright {
 	float: right;
-	margin: 5px 0 20px 20px;
+	margin: $spacer/2 0 $spacer*2 $spacer*2;
 }
 
 a img.alignnone {
-	margin: 5px 20px 20px 0;
+	margin: $spacer/2 $spacer*2 $spacer*2 0;
 }
 
 a img.alignleft {
@@ -44,20 +43,20 @@ a img.aligncenter {
 	background: #fff;
 	border: 1px solid #f0f0f0;
 	max-width: 96%; /* Image does not overflow the content area */
-	padding: 5px 3px 10px;
+	padding: $spacer/2 $spacer/4 $spacer;
 	text-align: center;
 }
 
 .wp-caption.alignnone {
-	margin: 5px 20px 20px 0;
+	margin: $spacer/2 $spacer*2 $spacer*2 0;
 }
 
 .wp-caption.alignleft {
-	margin: 5px 20px 20px 0;
+	margin: $spacer/2 $spacer*2 $spacer*2 0;
 }
 
 .wp-caption.alignright {
-	margin: 5px 0 20px 20px;
+	margin: $spacer/2 0 $spacer*2 $spacer*2;
 }
 
 .wp-caption img {
@@ -73,7 +72,7 @@ a img.aligncenter {
 	font-size: 11px;
 	line-height: 17px;
 	margin: 0;
-	padding: 0 4px 5px;
+	padding: 0 (($spacer/2)-1) $spacer/2;
 }
 
 /* Text meant only for screen readers. */
