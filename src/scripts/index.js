@@ -19,10 +19,16 @@
 			let node = $(_node);
 			if (!setMainContentMargins.initialMargin) {
 				setMainContentMargins.initialMargin = getOuterboxDimensions(node, "top") + parseInt(header.outerHeight(), 10);
-				node.css({'padding-top': setMainContentMargins.initialMargin + adminBarHeight});
-			} else {
-				node.css({'padding-top': setMainContentMargins.initialMargin + adminBarHeight});
 			}
+
+			node.css({'padding-top': setMainContentMargins.initialMargin});
+		});
+	}
+
+	function removeBlankArticles() {
+		$("main article").each((n, node)=>{
+			let article = $(node);
+			if (article.text().trim() === "") article.remove();
 		});
 	}
 
@@ -30,6 +36,8 @@
 
 	$doc.foundation();
 	$doc.ready(()=>{
+		removeBlankArticles();
+
 		let toggle = -1;
 		let checkAdminBar = ()=>{
 			let adminBar = $("#wpadminbar");
