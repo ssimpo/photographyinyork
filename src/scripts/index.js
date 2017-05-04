@@ -2,6 +2,7 @@
 	"use strict";
 
 	const margins = new WeakMap();
+	const fontSizes = new WeakMap();
 
 	function getOuterboxDimensions(node, position) {
 		return parseInt(node.css("margin-top") || 0, 10) + parseInt(node.css("border-top-width") || 0, 10) + parseInt(node.css("padding-top") || 0, 10);
@@ -34,11 +35,11 @@
 	function fixOverlayOverflow() {
 		$(".overlay").each((n, node)=>{
 			let overlay = $(node);
-			let bottom = overlay.position().top + overlay.height();
-			if (!node._originalFontSize) {
-				node._originalFontSize = overlay.css("font-size");
+			let bottom = overlay.position().top + overlay.outerHeight() - parseInt(overlay.css("padding-bottom"), 10);
+			if (!fontSizes.has(node)) {
+				fontSizes.set(node, overlay.css("font-size"))
 			} else {
-				overlay.css("font-size", node._originalFontSize);
+				overlay.css("font-size", fontSizes.get(node));
 			}
 
 			overlay.find("*").each((n, node)=>{
@@ -70,9 +71,8 @@
 		checkAdminBar.description = "Check Admin bar";
 		global.intervalCallbacks.add(checkAdminBar);
 
+		setMainContentMargins();
 		fixOverlayOverflow();
 		$(global).resize(fixOverlayOverflow);
-
-		setMainContentMargins();
 	});
 })(jQuery || $, window);
