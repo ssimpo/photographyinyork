@@ -30,6 +30,7 @@ slider {
 		@include overlay();
 		right: 0;
 		height: 100%;
+		padding-top: $spacer;
 		top: 0;
 		width: 45%;
 	}

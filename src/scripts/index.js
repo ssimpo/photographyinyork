@@ -1,10 +1,11 @@
 (function($, global){
 	"use strict";
 
+	const margins = new WeakMap();
+
 	function getOuterboxDimensions(node, position) {
 		return parseInt(node.css("margin-top") || 0, 10) + parseInt(node.css("border-top-width") || 0, 10) + parseInt(node.css("padding-top") || 0, 10);
 	}
-
 
 	function setMainContentMargins(adminBar=$("#wpadminbar")) {
 		let header = $(".off-canvas-content>header,body>header");
@@ -17,15 +18,9 @@
 
 		$("[shift-content]").each((n, _node)=>{
 			let node = $(_node);
-			if (!setMainContentMargins.initialMargin) {
-				setMainContentMargins.initialMargin = getOuterboxDimensions(node, "top") + parseInt(header.outerHeight(), 10);
-			}
-
-			if (node.attr("shift-content") === "include-admin") {
-				node.css({'padding-top': setMainContentMargins.initialMargin + adminBarHeight});
-			} else {
-				node.css({'padding-top': setMainContentMargins.initialMargin});
-			}
+			if (!margins.has(_node)) margins.set(_node, getOuterboxDimensions(node, "top") + parseInt(header.outerHeight(), 10));
+			let padding = margins.get(_node) + ((node.attr("shift-content") === "include-admin") ? adminBarHeight : 0);
+			node.css("padding-top", padding + "px");
 		});
 	}
 
