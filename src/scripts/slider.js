@@ -55,6 +55,13 @@
 			play.period = interval;
 			play.description = "slider";
 			global.intervalCallbacks.add(play);
+
+			$(global).resize(()=>{
+				height = parseInt((node.width()*9)/16, 10);
+				image1.css({height});
+				image2.css({height});
+				node.css({height});
+			});
 		});
 	}
 
