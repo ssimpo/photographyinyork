@@ -88,6 +88,16 @@ main article {
 	}
 }
 
+.small-overlay {
+	border-bottom: 1px solid #cacaca;
+	margin-bottom: $spacer * 2;
+	padding-bottom: $spacer * 2;
+
+	&:empty {
+		display: none;
+	}
+}
+
 header nav {
 	display: table;
 
@@ -129,7 +139,7 @@ header nav {
 		display: table-cell;
 		text-align: left;
 		vertical-align: middle;
-		width: 10%;
+		width: auto;
 	}
 
 	.logo-wrap {
@@ -139,6 +149,14 @@ header nav {
 		text-align: center;
 		vertical-align: middle;
 		width: 20%;
+
+		@media screen and (max-width: 39.9375em) {
+			width: auto;
+
+			.logo {
+				width: 90%;
+			}
+		}
 	}
 }
 
