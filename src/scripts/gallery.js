@@ -149,6 +149,7 @@
 					if (img.length) {
 						overlay = $("<div></div>")
 							.addClass("overlay")
+							.attr("resizer", "")
 							.html(img.attr("title"))
 							.appendTo(this.$content.parent());
 					}
