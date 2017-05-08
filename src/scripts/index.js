@@ -14,6 +14,7 @@
 		if (adminBar.length) {
 			adminBarHeight = parseInt(adminBar.outerHeight(), 10);
 			header.css({top: adminBarHeight});
+			$(".off-canvas-content").css({"min-height": "calc(100vh - "+adminBarHeight+"px)"});
 		}
 
 		$("[shift-content]").each((n, _node)=>{
