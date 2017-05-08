@@ -8,9 +8,10 @@ function piy_get_section_block( $atts=array() ) {
 		'meta_key' => 'wpcf-add-to-homepage',
 		'meta_value' => '1'
 	));
+	$link = '<a href="'.get_permalink(get_the_ID()).'">';
 	if ($loop->have_posts()) {
 		while ( $loop->have_posts() ) : $loop->the_post();
-			$html .= '<div class="medium-4 columns"><h2>' . get_the_title() . '</h2>' . get_the_post_thumbnail($post->ID, 'homepage-block-image') . '<p>' . get_the_excerpt() . '</p></div>';
+			$html .= '<div class="medium-4 columns"><h2>' . $link . get_the_title() . '</a></h2>' . $link . get_the_post_thumbnail($post->ID, 'homepage-block-image') . '</a><p>' . $link . get_the_excerpt() . '</a></p></div>';
 		endwhile;
 		wp_reset_postdata();
 	}

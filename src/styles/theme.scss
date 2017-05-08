@@ -35,11 +35,11 @@ main {
 }
 
 h1 {
-	font-size: 1.4em;
+	font-size: 1.4rem;
 }
 
 h2 {
-	font-size: 1.2em;
+	font-size: 1.2rem;
 }
 
 .hidden {
@@ -163,10 +163,10 @@ header nav {
 footer {
 	.footer-main {
 		background-color: $black;
-		font-size: 1.4em;
+		font-size: 1.4rem;
 
 		.footer-main-block1, .footer-main-block2, .footer-main-block3 {
-			line-height: 1.4em;
+			line-height: 1.4rem;
 			padding-top: $spacer / 2;
 			padding-bottom: $spacer / 2;
 		}
@@ -175,14 +175,14 @@ footer {
 			text-align: left;
 
 			.logo {
-				height: 1.2em;
+				height: 1.2rem;
 				margin: 0;
 				width: auto;
 			}
 		}
 
 		.footer-main-block2 {
-			line-height: 1.4em;
+			line-height: 1.4rem;
 			text-align: center;
 		}
 
@@ -237,7 +237,30 @@ footer {
 	padding-top: $spacer;
 
 	h2 {
-		font-size: 1.5em;
+		color: $jet;
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-top: $spacer;
+
+		a {
+			color: inherit;
+
+			&:hover {
+				text-shadow: 1px 1px rgba($jet, 0.8);
+			}
+		}
+	}
+
+	a:hover img {
+		opacity: 0.8;
+	}
+
+	p a {
+		color: $black;
+
+		&:hover {
+			color: $jet;
+		}
 	}
 
 	.columns {
