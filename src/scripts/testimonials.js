@@ -20,6 +20,7 @@
 				pos++;
 				if (pos >= testimonials.length) pos = 0;
 				testimonials[pos].show();
+				testimonials[pos].piyResizer();
 			};
 			play.period = interval;
 			play.description = "testimonials";
