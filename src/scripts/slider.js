@@ -13,26 +13,24 @@
 			.appendTo(options.node);
 	}
 
+	function addSrc(imageNode, data) {
+		imageNode.attr("src", data.src);
+
+		if (data.srcset.trim() !== "") {
+			imageNode.attr("srcset", data.srcset);
+		} else if (imageNode.attr("srcset")) {
+			imageNode.removeAttr("srcset")
+		}
+	}
+
 	function nextSlide(options) {
 		options.image1.animate({opacity:0}, {duration:options.duration, done:()=>{
-			options.image1.attr("src", options.images[options.pos].src);
-
-			if (options.images[options.pos].srcset.trim() !== "") {
-				options.image1.attr("srcset", options.images[options.pos].srcset);
-			} else if (options.image1.attr("srcset")) {
-				options.image1.removeAttr("srcset")
-			}
-
+			if (options.pos >= options.images.length) options.pos = 0;
+			addSrc(options.image1, options.images[options.pos]);
 			options.pos++;
 			if (options.pos >= options.images.length) options.pos = 0;
 			options.image1.css({opacity:1});
-			options.image2.attr("src", options.images[options.pos].src);
-
-			if (options.images[options.pos].srcset.trim() !== "") {
-				options.image2.attr("srcset", options.images[options.pos].srcset);
-			} else if (options.image2.attr("srcset")) {
-				options.image2.removeAttr("srcset")
-			}
+			addSrc(options.image2, options.images[options.pos]);
 		}});
 	}
 
