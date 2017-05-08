@@ -12,6 +12,14 @@
 <header>
 	<nav class="row">
 		<div class="medium-12 columns" move-on-small="#off-canvas-content" move-on-small-target="ul">
+			<?php
+				$logo_html = '<img src="'.PIY_DIR.'/images/logo.png" class="logo" />';
+				if (!is_home() && !is_front_page()) {
+					$logo_html = '<a class="logo-wrap" href="'.get_home_url().'">' . $logo_html . '</a>';
+				} else {
+					$logo_html = '<span class="logo-wrap">' . $logo_html . '</span>';
+				}
+			?>
 			<?php echo wp_nav_menu_split(array(
 				'theme_location'  => 'top',
 				'menu_class_left' => 'top-menu top-menu-left',
@@ -26,7 +34,7 @@
 				'depth'           => 0,
 				'walker'          => '',
 				'balance'         => 'left',
-				'middle_html'     => '<div class="menu-button-wrapper show-for-small-only"><button class="menu-icon" type="button" data-toggle="offCanvas"></button></div><a href="'.get_home_url().'" class="logo-wrap"><img src="'.PIY_DIR.'/images/logo.png" class="logo" /></a>'
+				'middle_html'     => '<div class="menu-button-wrapper show-for-small-only"><button class="menu-icon" type="button" data-toggle="offCanvas"></button></div>' . $logo_html
 			));?>
 		</div>
 	</nav>
