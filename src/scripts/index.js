@@ -35,7 +35,8 @@
 
 	$doc.foundation();
 	$doc.ready(()=>{
-		removeBlankArticles();
+		// We no-longer want to remove these as we need to space the screen.
+		//removeBlankArticles();
 
 		let toggle = -1;
 		let checkAdminBar = ()=>{

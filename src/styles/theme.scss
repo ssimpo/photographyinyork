@@ -24,6 +24,30 @@ body, html {
 	color: $white;
 }
 
+.off-canvas-content {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+
+	main {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+
+		article {
+			flex-grow: 0;
+		}
+
+		article:last-child {
+			flex-grow: 1;
+		}
+	}
+
+	&>footer, &>.copyright-notice {
+		flex-grow: 0;
+	}
+}
+
 .logo {
 	margin-top: $spacer * 1.5;
 	margin-bottom: $spacer;
