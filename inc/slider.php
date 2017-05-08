@@ -13,6 +13,7 @@ function piy_get_slider_start( $atts ) {
 	$html = '<slider';
 
 	$html .= array_key_exists('class', $atts) ? ' class="' . $atts['class'] . '"' : ' class="row medium-12 columns"';
+	$html .= array_key_exists('sizes', $atts) ? ' sizes="' . $atts['sizes'] . '"' : '';
 	$html .= array_key_exists('interval', $atts) ? ' interval="' . $atts['interval'] . '"' : ' interval="3"';
 	$html .= array_key_exists('duration', $atts) ? ' duration="' . $atts['duration'] . '"' : ' duration="1"';
 

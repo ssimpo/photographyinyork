@@ -5,7 +5,6 @@
 
 	function applyResizer(resizers=this) {
 		resizers.each((n, node)=>{
-			console.log(node);
 			let resizer = $(node);
 			let bottom = resizer.offset().top + resizer.outerHeight() - parseInt(resizer.css("padding-bottom"), 10);
 			if (!fontSizes.has(node)) {
