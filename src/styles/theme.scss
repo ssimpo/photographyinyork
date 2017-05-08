@@ -199,12 +199,14 @@ footer {
 	padding-top: 0.3rem;
 	padding-bottom: 0.3rem;
 	text-align: center;
+	color: $black;
 
 	a, a:visited {
-		color: $black;
+		color: $jet;
 
 		&:hover {
-			color: lighten($black, 10%);
+			color: lighten($jet, 10%);
+			text-decoration: underline;
 		}
 	}
 }
