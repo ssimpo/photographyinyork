@@ -164,10 +164,13 @@ header nav {
 	}
 
 	.menu-button-wrapper {
-		display: table-cell;
-		text-align: left;
-		vertical-align: middle;
+		flex-grow: 0;
+		flex-shrink: 0;
 		width: auto;
+
+		button:focus, button:active {
+			outline: none;
+		}
 	}
 
 	.logo-wrap {
