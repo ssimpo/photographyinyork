@@ -122,24 +122,29 @@ main article {
 }
 
 header nav {
-	display: table;
+	.top-menu-wrapper {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}
 
 	.top-menu {
-		display: table-cell;
+		align-items: center;
+		flex-grow: 1;
+		flex-shrink: 1;
 		margin: 0;
-		vertical-align: middle;
-
+		white-space: nowrap;
 		width: 40%;
 
 		@media screen and (min-width: 40em) and (max-width: 63.9375em) {
 			font-size: 75%;
 		}
 
-		&.top-menu-left {
+		&.top-menu-left, &.top-menu-left li {
 			text-align: right;
 		}
 
-		&.top-menu-right {
+		&.top-menu-right, &.top-menu-right li {
 			text-align: left;
 		}
 
@@ -147,9 +152,9 @@ header nav {
 			color: $white;
 			display: inline-block;
 			font-weight: 600;
-			margin-right: $spacer;
-			margin-left: $spacer;
-			text-align: center;
+			margin-left: $spacer/2;
+			margin-right: $spacer/2;
+			white-space: nowrap;
 
 			a, a:hover {
 				color: $white;

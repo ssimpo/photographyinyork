@@ -11,7 +11,7 @@
 <body <?php body_class(); ?>>
 <header>
 	<nav class="row">
-		<div class="medium-12 columns" move-on-small="#off-canvas-content" move-on-small-target="ul">
+		<div class="medium-12 columns top-menu-wrapper" move-on-small="#off-canvas-content" move-on-small-target="ul">
 			<?php
 				$logo_html = '<img src="'.PIY_DIR.'/images/logo.png" class="logo" />';
 				if (!is_home() && !is_front_page()) {
