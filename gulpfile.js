@@ -64,4 +64,9 @@ gulp.task('minify', ()=>gulp.src(config.gulp.source.scripts)
 	)
 );
 
+gulp.task('watch', ()=>{
+	gulp.watch(config.gulp.source.scriptsWatch, ['minify']);
+	gulp.watch(config.gulp.source.stylesWatch, ['sass']);
+});
+
 gulp.task('build', ['minify', 'sass']);

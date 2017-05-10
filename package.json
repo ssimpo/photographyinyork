@@ -32,6 +32,7 @@
       "remotePath": "/var/www/michaeljlester/www/photographyinyork.co.uk/wp-content/themes/photographyinyork"
     },
     "source": {
+      "scriptsWatch": "./src/*/*.js",
       "scripts": [
         "./src/scripts/interval.js",
         "./src/scripts/slider.js",
@@ -41,6 +42,7 @@
         "./src/scripts/resizer.js",
         "./src/scripts/index.js"
       ],
+      "stylesWatch": "./src/*/*.scss",
       "styles": [
         "./src/styles/index.scss"
       ]
