@@ -11,11 +11,18 @@ body, html {
 }
 
 .off-canvas-content>header, body>header {
-	background-color: $overlayBackground;
-	position: fixed;
-	top: 0;
+	@media screen and (min-width: 39.9376em) {
+		background-color: $overlayBackground;
+		position: fixed;
+		top: 0;
+		z-index: 9999;
+	}
+
+	@media screen and (max-width: 39.9375em) {
+		background-color: $black;
+	}
+
 	width: 100%;
-	z-index: 9999;
 }
 
 .off-canvas-content>footer, body>footer {

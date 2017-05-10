@@ -19,8 +19,9 @@
 
 		$("[shift-content]").each((n, _node)=>{
 			let node = $(_node);
-			if (!margins.has(_node)) margins.set(_node, getOuterboxDimensions(node, "top") + parseInt(header.outerHeight(), 10));
+			if (!margins.has(_node)) margins.set(_node, getOuterboxDimensions(node, "top"));
 			let padding = margins.get(_node) + ((node.attr("shift-content") === "include-admin") ? adminBarHeight : 0);
+			if (Foundation.MediaQuery.current !== "small") padding += parseInt(header.outerHeight(), 10);
 			node.css("padding-top", padding + "px");
 		});
 	}
@@ -52,5 +53,6 @@
 		global.intervalCallbacks.add(checkAdminBar);
 
 		setMainContentMargins();
+		$(global).resize(setMainContentMargins);
 	});
 })(jQuery || $, window);

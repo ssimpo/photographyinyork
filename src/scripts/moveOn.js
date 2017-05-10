@@ -74,7 +74,7 @@
 			});
 		}
 
-		$(window).on('changed.zf.mediaquery', doMove);
+		$(global).on('changed.zf.mediaquery', doMove);
 		doMove(undefined, Foundation.MediaQuery.current, undefined);
 	}
 
