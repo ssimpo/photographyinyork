@@ -361,6 +361,10 @@ main>.gallery-parent {
 }
 
 #below-header-block {
+	&:empty {
+		display: none;
+	}
+
 	background-color: $black;
 	padding: $spacer;
 
