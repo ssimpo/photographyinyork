@@ -15,14 +15,14 @@ body, html {
 }
 
 .off-canvas-content>header, body>header {
-	@media screen and (min-width: 39.9376em) {
+	@include breakpoint(medium up) {
 		background-color: $overlayBackground;
 		position: fixed;
 		top: 0;
 		z-index: 9999;
 	}
 
-	@media screen and (max-width: 39.9375em) {
+	@include breakpoint(small only) {
 		background-color: $black;
 	}
 
@@ -138,7 +138,7 @@ header nav {
 		display: flex;
 		justify-content: center;
 
-		@media screen and (max-width: 39.9375em) {
+		@include breakpoint(small only) {
 			justify-content: flex-start;
 		}
 	}
@@ -151,7 +151,7 @@ header nav {
 		white-space: nowrap;
 		width: 40%;
 
-		@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+		@include breakpoint(medium only) {
 			font-size: 75%;
 		}
 
@@ -196,7 +196,7 @@ header nav {
 		vertical-align: middle;
 		width: 20%;
 
-		@media screen and (max-width: 39.9375em) {
+		@include breakpoint(small only) {
 			width: auto;
 
 			.logo {
@@ -224,7 +224,7 @@ footer {
 		}
 
 		.footer-main-block1 {
-			@media screen and (min-width: 39.9376em) {
+			@include breakpoint(medium up) {
 				text-align: left;
 			}
 
@@ -232,7 +232,7 @@ footer {
 				margin: 0;
 				width: 100%;
 
-				@media screen and (max-width: 39.9375em) {
+				@include breakpoint(small only) {
 					width: 80%;
 				}
 			}
@@ -244,13 +244,13 @@ footer {
 		}
 
 		.footer-main-block3 {
-			@media screen and (max-width: 39.9375em) {
+			@include breakpoint(small only) {
 				ul {
 					display: flex;
 					justify-content: center;
 				}
 			}
-			@media screen and (min-width: 39.9376em) {
+			@include breakpoint(medium up) {
 				ul {
 					float: right;
 				}
