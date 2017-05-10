@@ -49,11 +49,16 @@ body, html {
 		flex-grow: 1;
 
 		article {
+			border-top: 1px solid $mediumGrey;
 			flex-grow: 0;
-		}
 
-		article:last-child {
-			flex-grow: 1;
+			&.first {
+				border-top: none;
+			}
+
+			&:last-child {
+				flex-grow: 1;
+			}
 		}
 	}
 

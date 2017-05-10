@@ -82,6 +82,7 @@
 			header.css("top", 0);
 			slideMenuOpen = true;
 		});
+
 		$(global).on("closed.zf.offcanvas", ()=>{
 			let header = $(".off-canvas-content>header,body>header");
 			if (header.length && headerTop) header.css("top", headerTop);
