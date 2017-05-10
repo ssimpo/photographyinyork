@@ -10,6 +10,10 @@ body, html {
 	width: 100%;
 }
 
+.button {
+	background-color: $darkGrey;
+}
+
 .off-canvas-content>header, body>header {
 	@media screen and (min-width: 39.9376em) {
 		background-color: $overlayBackground;
@@ -133,6 +137,10 @@ header nav {
 		align-items: center;
 		display: flex;
 		justify-content: center;
+
+		@media screen and (max-width: 39.9375em) {
+			justify-content: flex-start;
+		}
 	}
 
 	.top-menu {
