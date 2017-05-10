@@ -99,6 +99,10 @@ main article {
 		margin: 0;
 		padding: 0;
 
+		&:focus, &:active, li:focus, li:active, li a:focus, li a:active {
+			outline: none;
+		}
+
 		li {
 			background-color: $white;
 			color: $black;
@@ -130,6 +134,10 @@ main article {
 	&:empty {
 		display: none;
 	}
+}
+
+article.empty .small-overlay {
+	border-bottom: none;
 }
 
 header nav {

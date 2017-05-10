@@ -27,10 +27,11 @@
 		});
 	}
 
-	function removeBlankArticles() {
+	function markBlankArticles() {
 		$("main article").each((n, node)=>{
-			let article = $(node);
-			if (article.text().trim() === "") article.remove();
+			let article = $(node).clone();
+			article.find(".small-overlay").each((n, node)=>$(node).remove());
+			if (article.text().trim() === "") $(node).addClass("empty");
 		});
 	}
 
@@ -51,7 +52,7 @@
 	$doc.foundation();
 	$doc.ready(()=>{
 		// We no-longer want to remove these as we need to space the screen.
-		//removeBlankArticles();
+		markBlankArticles();
 
 		let toggle = -1;
 		let checkAdminBar = ()=>{
