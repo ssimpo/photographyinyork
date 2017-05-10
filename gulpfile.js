@@ -15,6 +15,7 @@ const gutil = require('gulp-util');
 const concat = require('gulp-concat');
 const debug = require('gulp-debug');
 const sftp = require('gulp-sftp-new');
+const livereload = require('gulp-livereload');
 
 
 config.gulp.deployment = {
@@ -26,25 +27,23 @@ config.gulp.deployment = {
 	}, sftpConfig)
 };
 
-gulp.task('sass', () => {
-	fs.readFile('./src/header.txt', 'utf8', (err, stylesHeader) => {
-		if (err) throw err;
-
-		gulp.src(config.gulp.source.styles)
-			.pipe(sourcemaps.init())
-			.pipe(sass(config.gulp.build.sass).on('error', gutil.log))
-			.pipe(cleanCSS(config.gulp.build.cleanCss))
-			.pipe(rename(path=>{path.basename = config.gulp.build.styleRename}))
-			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest(config.gulp.build.styles))
+gulp.task('sass', ()=>gulp.src(config.gulp.source.styles)
+	.pipe(sourcemaps.init())
+	.pipe(sass(config.gulp.build.sass).on('error', gutil.log))
+	.pipe(cleanCSS(config.gulp.build.cleanCss))
+	.pipe(rename(path=>{path.basename = config.gulp.build.styleRename}))
+	.pipe(sourcemaps.write('./'))
+	.pipe(gulp.dest(config.gulp.build.styles))
+	.pipe(sftp(config.gulp.deployment.styles))
+	.on('end', ()=>{
+		let stylesHeader = fs.readFileSync('./src/header.txt', 'utf8');
+		return gulp.src(['./style.css'])
+			.pipe(header(stylesHeader))
+			.pipe(gulp.dest('./'))
 			.pipe(sftp(config.gulp.deployment.styles))
-			.on('end', ()=>gulp.src(['./style.css'])
-				.pipe(header(stylesHeader))
-				.pipe(gulp.dest('./'))
-				.pipe(sftp(config.gulp.deployment.styles))
-			);
-	});
-});
+			.pipe(livereload())
+	})
+);
 
 gulp.task('minify', ()=>gulp.src(config.gulp.source.scripts)
 	//.pipe(debug())
@@ -61,10 +60,12 @@ gulp.task('minify', ()=>gulp.src(config.gulp.source.scripts)
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(config.gulp.build.scripts))
 		.pipe(sftp(config.gulp.deployment.scripts))
+		.pipe(livereload())
 	)
 );
 
 gulp.task('watch', ()=>{
+	livereload.listen();
 	gulp.watch(config.gulp.source.scriptsWatch, ['minify']);
 	gulp.watch(config.gulp.source.stylesWatch, ['sass']);
 });
