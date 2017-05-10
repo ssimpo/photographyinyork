@@ -11,7 +11,11 @@
 <body <?php body_class(); ?>>
 <div class="off-canvas-wrapper">
 <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
-	<div id="off-canvas-content" shift-content="include-admin"></div>
+	<div id="off-canvas-content" shift-content="include-admin">
+		<?php if (!is_home() && !is_front_page()) { ?>
+		<ul class="top-menu"><li><a href="<?php echo get_home_url(); ?>">Home</a></li></ul>
+		<?php } ?>
+	</div>
 </div>
 <div class="off-canvas-content" data-off-canvas-content>
 	<header move-on-medium="body" move-on-large="body" move-on-xlarge="body" move-on-xxlarge="body">

@@ -2,6 +2,7 @@
 	"use strict";
 
 	const margins = new WeakMap();
+	let homeLink;
 
 	function getOuterboxDimensions(node, position) {
 		return parseInt(node.css("margin-top") || 0, 10) + parseInt(node.css("border-top-width") || 0, 10) + parseInt(node.css("padding-top") || 0, 10);
@@ -33,6 +34,18 @@
 		});
 	}
 
+	function removeLogoLinkOnMobile() {
+		let a = $("a.logo-wrap");
+		if (a.length) {
+			if (!homeLink) homeLink = a.attr("href");
+			if (Foundation.MediaQuery.current === "small") {
+				a.removeAttr("href");
+			} else {
+				a.attr("href", homeLink);
+			}
+		}
+	}
+
 	let $doc = $(document);
 
 	$doc.foundation();
@@ -54,5 +67,7 @@
 
 		setMainContentMargins();
 		$(global).resize(setMainContentMargins);
+		$(global).on('changed.zf.mediaquery', removeLogoLinkOnMobile);
+		removeLogoLinkOnMobile();
 	});
 })(jQuery || $, window);
