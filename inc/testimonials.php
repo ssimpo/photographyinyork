@@ -16,7 +16,9 @@ function piy_create_testimonial_post_type() {
 add_action( 'init', 'piy_create_testimonial_post_type' );
 
 function piy_get_testimonials( $atts = array()) {
-	$html = '<testimonials>';
+	$html = '<testimonials';
+	foreach($atts as $key => $value) $html .= ' ' . $key .'="' . $value . '"';
+	$html .= '>';
 
 	$loop = new WP_Query( array(
 		'post_type' => 'testimonial',
@@ -26,7 +28,7 @@ function piy_get_testimonials( $atts = array()) {
 	) );
 	if ($loop->have_posts()) {
 		while ( $loop->have_posts() ) : $loop->the_post();
-			$html .= '<div class="testimonal" resizer><p>' . get_the_content() . '</p><p class="ref">' . get_the_title() . '</p></div>';
+			$html .= '<div class="testimonal"><p>' . get_the_content() . '</p><p class="ref">' . get_the_title() . '</p></div>';
 		endwhile;
 		wp_reset_postdata();
 	}

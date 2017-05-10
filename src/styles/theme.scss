@@ -352,3 +352,12 @@ main>.gallery-parent {
 	max-height: 90vh;
 	max-width: 90vw;
 }
+
+#below-header-block {
+	background-color: $black;
+	padding: $spacer;
+
+	testimonials, .testimonal {
+		background-color: inherit;
+	}
+}
