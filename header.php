@@ -11,7 +11,7 @@
 <body <?php body_class(); ?>>
 <div class="off-canvas-wrapper">
 <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
-	<div id="off-canvas-content" shift-content="include-admin">
+	<div id="off-canvas-content">
 		<?php if (!is_home() && !is_front_page()) { ?>
 		<ul class="top-menu"><li><a href="<?php echo get_home_url(); ?>">Home</a></li></ul>
 		<?php } ?>

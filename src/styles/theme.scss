@@ -1,5 +1,9 @@
 @import "variables";
 
+#wpadminbar {
+	position: fixed;
+}
+
 body, html {
 	background-color: $bodyBackround;
 	border: none;
@@ -15,12 +19,12 @@ body, html {
 }
 
 .off-canvas-content>header, body>header {
-	@include breakpoint(medium up) {
+	//@include breakpoint(medium up) {
 		background-color: $overlayBackground;
 		position: fixed;
 		top: 0;
 		z-index: 9999;
-	}
+	//}
 
 	@include breakpoint(small only) {
 		background-color: $black;
@@ -124,6 +128,10 @@ main article {
 			}
 		}
 	}
+}
+
+#small-content-header-block:empty, #header-block:empty {
+	display: none;
 }
 
 .small-overlay {

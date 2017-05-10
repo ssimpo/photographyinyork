@@ -2,7 +2,8 @@
 	<main>
 		<?php $header_block = types_render_field( 'header-block', array('output' => 'raw')); ?>
 		<?php $hide_title = types_render_field( 'hide-title', array()); ?>
-		<?php echo $header_block; ?>
+		<div id="small-content-header-block" shift-content></div>
+		<div id="header-block" move-on-small="#small-content-header-block"><?php echo $header_block; ?></div>
 		<div id="below-header-block"></div>
 		<?php while ( have_posts() ) : the_post(); ?>
 			<article<?php echo (($header_block == '') ? ' shift-content' : ''); ?> class="row medium-12 columns">

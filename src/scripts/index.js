@@ -3,6 +3,8 @@
 
 	const margins = new WeakMap();
 	let homeLink;
+	let headerTop;
+	let slideMenuOpen = false;
 
 	function getOuterboxDimensions(node, position) {
 		return parseInt(node.css("margin-top") || 0, 10) + parseInt(node.css("border-top-width") || 0, 10) + parseInt(node.css("padding-top") || 0, 10);
@@ -22,7 +24,7 @@
 			let node = $(_node);
 			if (!margins.has(_node)) margins.set(_node, getOuterboxDimensions(node, "top"));
 			let padding = margins.get(_node) + ((node.attr("shift-content") === "include-admin") ? adminBarHeight : 0);
-			if (Foundation.MediaQuery.current !== "small") padding += parseInt(header.outerHeight(), 10);
+			padding += parseInt(header.outerHeight(), 10);
 			node.css("padding-top", padding + "px");
 		});
 	}
@@ -68,7 +70,22 @@
 
 		setMainContentMargins();
 		$(global).resize(setMainContentMargins);
-		$(global).on('changed.zf.mediaquery', removeLogoLinkOnMobile);
+		$(global).on('changed.zf.mediaquery', ()=>{
+			removeLogoLinkOnMobile();
+			if ((slideMenuOpen) && (Foundation.MediaQuery.current !== "small")) $(".off-canvas-content").foundation("close");
+		});
 		removeLogoLinkOnMobile();
+
+		$(global).on("opened.zf.offcanvas", ()=>{
+			let header = $(".off-canvas-content>header,body>header");
+			if (header.length && (headerTop === undefined)) headerTop = header.css("top");
+			header.css("top", 0);
+			slideMenuOpen = true;
+		});
+		$(global).on("closed.zf.offcanvas", ()=>{
+			let header = $(".off-canvas-content>header,body>header");
+			if (header.length && headerTop) header.css("top", headerTop);
+			slideMenuOpen = false;
+		});
 	});
 })(jQuery || $, window);
