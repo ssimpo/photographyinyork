@@ -3,6 +3,9 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#646464">
+	<meta name="msapplication-navbutton-color" content="#646464">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#646464">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php wp_head(); ?>
@@ -12,7 +15,7 @@
 <div class="off-canvas-wrapper">
 <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
 	<div id="off-canvas-content">
-		<?php if (!is_home() && !is_front_page()) { ?>
+		<?php if (!is_front_page()) { ?>
 		<ul class="top-menu"><li><a href="<?php echo get_home_url(); ?>">Home</a></li></ul>
 		<?php } ?>
 	</div>

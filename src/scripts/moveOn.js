@@ -13,6 +13,7 @@
 
 	function addMoveOnId(target, parent) {
 		if (!target.attr("move-on-id")) {
+			console.log(target);
 			let id = "move-on-" + randomString();
 			target.attr("move-on-id", id);
 			let placeholder = $("<move-on-placeholder></move-on-placeholder>").attr("id", id);
@@ -45,7 +46,7 @@
 
 		function moveContent(moveToRef, moveOnTarget) {
 			let moveTo = $(moveToRef);
-			if (moveTo.length) moveTo.append(moveOnTarget);
+			if (moveTo.length) moveTo.prepend(moveOnTarget);
 		}
 
 		function doMove(event, size, oldSize) {

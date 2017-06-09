@@ -19,17 +19,7 @@ body, html {
 }
 
 .off-canvas-content>header, body>header {
-	//@include breakpoint(medium up) {
-		background-color: $overlayBackground;
-		position: fixed;
-		top: 0;
-		z-index: 9999;
-	//}
-
-	@include breakpoint(small only) {
-		background-color: $black;
-	}
-
+	background-color: $black;
 	width: 100%;
 }
 
@@ -192,9 +182,13 @@ header nav {
 			margin-right: $spacer/2;
 			white-space: nowrap;
 
-			a, a:hover {
+			a {
 				color: $white;
 				font-weight: 600;
+
+				&:hover {
+					text-shadow: 1px 1px rgba($white, 0.8);
+				}
 			}
 		}
 	}
