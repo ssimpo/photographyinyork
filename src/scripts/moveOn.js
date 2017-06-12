@@ -13,7 +13,6 @@
 
 	function addMoveOnId(target, parent) {
 		if (!target.attr("move-on-id")) {
-			console.log(target);
 			let id = "move-on-" + randomString();
 			target.attr("move-on-id", id);
 			let placeholder = $("<move-on-placeholder></move-on-placeholder>").attr("id", id);

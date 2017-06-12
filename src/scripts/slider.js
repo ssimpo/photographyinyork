@@ -2,6 +2,7 @@
 	"use strict";
 
 	function createSliderImage(options) {
+		options.node.attr("overlay-position", options.images[0].overlayposition);
 		return $("<img class=\"slider-image-"+options.no+"\">")
 			.css({
 				height:options.height,
@@ -24,6 +25,7 @@
 	}
 
 	function nextSlide(options) {
+		options.node.attr("overlay-position", options.images[options.pos].overlayposition);
 		options.image1.animate({opacity:0}, {duration:options.duration, done:()=>{
 			if (options.pos >= options.images.length) options.pos = 0;
 			addSrc(options.image1, options.images[options.pos]);
@@ -42,6 +44,7 @@
 			let interval = parseFloat(node.attr("interval") || 3) * 1000;
 			let images = (node.attr("images") || "").split(",").filter(image=>(image.trim() !== ""));
 			let sizes = (node.attr("sizes") || "").split(",").filter(size=>(size.trim() !== ""));
+			let overlayposition = [];
 
 			const xAllImage = new RegExp(sizes.join("\.|") + "\.");
 
@@ -50,6 +53,14 @@
 
 				images.push(img.attr("src"));
 
+				if (img.hasClass("alignleft")) {
+					overlayposition.push("left");
+				} else if (img.hasClass("aligncenter")) {
+					overlayposition.push("center");
+				} else {
+					overlayposition.push("right");
+				}
+
 				if (img.parent().prop("tagName").toLowerCase() === "a") {
 					img.parent().remove();
 				} else {
@@ -57,7 +68,7 @@
 				}
 			});
 
-			images = images.map(image=>{
+			images = images.map((image, n)=>{
 				let srcset = "";
 
 				if (sizes.length && xAllImage.test(image)) {
@@ -67,7 +78,7 @@
 					});
 				}
 
-				return {src: image, srcset};
+				return {src: image, srcset, overlayposition:overlayposition[n]};
 			});
 
 			let pos = 1;
@@ -76,7 +87,7 @@
 
 			let image1 = createSliderImage({no:1, images, node, height});
 			let image2 = createSliderImage({no:2, images, node, height});
-			let slideOptions = {pos, image1, image2, duration, images};
+			let slideOptions = {pos, image1, image2, duration, images, node};
 
 			let play = ()=>nextSlide(slideOptions);
 			play.period = interval;

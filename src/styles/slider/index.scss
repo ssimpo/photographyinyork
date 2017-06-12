@@ -20,10 +20,26 @@ slider {
 	testimonials {
 		@include overlay();
 		border-radius: $spacer/2;
-		bottom: $spacer * 5;
-		right: $spacer * 5;
 		height: 35%;
 		width: 45%;
+		bottom: $spacer * 5;
+		left: $spacer * 5;
+	}
+
+	&[overlay-position="left"] testimonials {
+		bottom: $spacer * 5;
+		left: $spacer * 5;
+	}
+
+	&[overlay-position="center"] testimonials {
+		bottom: $spacer * 5;
+		right: 0;
+		left: 0;
+	}
+
+	&[overlay-position="right"] testimonials {
+		bottom: $spacer * 5;
+		right: $spacer * 5;
 	}
 
 	.overlay {
