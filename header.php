@@ -45,7 +45,7 @@
 					'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 					'depth'           => 0,
 					'walker'          => '',
-					'balance'         => 'left',
+					'balance'         => 'right',
 					'middle_html'     => '<div class="menu-button-wrapper show-for-small-only"><button class="menu-icon" type="button" data-toggle="offCanvas"></button></div>' . $logo_html
 				));?>
 			</div>

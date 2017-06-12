@@ -3,6 +3,7 @@ require_once('inc/constants.php');
 require_once('inc/helper.php');
 require_once('inc/menu.php');
 require_once('inc/enqueue.php');
+require_once('inc/contacts.php');
 require_once('inc/testimonials.php');
 require_once('inc/slider.php');
 require_once('inc/overlay.php');
