@@ -31,6 +31,8 @@ function piy_get_testimonials( $atts = array()) {
 			$html .= '<div class="testimonal"><p>' . get_the_content() . '</p><p class="ref">' . get_the_title() . '</p></div>';
 		endwhile;
 		wp_reset_postdata();
+	} else {
+		return '';
 	}
 
 	return $html .'</testimonials>';
