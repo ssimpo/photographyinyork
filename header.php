@@ -3,6 +3,8 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
+	<title><?php if (!is_front_page()) {wp_title('');echo ' | ';} bloginfo('name'); ?></title>
+
 	<meta name="theme-color" content="#646464">
 	<meta name="msapplication-navbutton-color" content="#646464">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#646464">
