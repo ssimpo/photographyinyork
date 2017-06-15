@@ -3,7 +3,7 @@ require_once('inc/constants.php');
 require_once('inc/helper.php');
 require_once('inc/menu.php');
 require_once('inc/enqueue.php');
-require_once('inc/contacts.php');
+require_once('inc/customise.php');
 require_once('inc/testimonials.php');
 require_once('inc/slider.php');
 require_once('inc/overlay.php');
@@ -50,7 +50,8 @@ function piy_setup() {
 
 	register_nav_menus( array(
 		'top'    => __( 'Top Menu', 'piy' ),
-		'social' => __( 'Social Menu', 'piy' ),
+		'terms' => __( 'Terms Menu', 'piy' ),
+		'social' => __( 'Social Menu', 'piy' )
 	) );
 }
 add_action( 'after_setup_theme', 'piy_setup' );

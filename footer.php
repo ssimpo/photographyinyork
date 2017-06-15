@@ -15,9 +15,16 @@
 	</div>
 </footer>
 <div class="copyright-notice">
-	Copyright and design &copy; 2017 by <a href="http://whitebolt.net/templates/photographyinyork">Whitebolt LTD</a>
+	Copyright and design &copy; 2017 by <a href="http://whitebolt.net/">Whitebolt LTD</a>
+	<?php if ( has_nav_menu( 'terms' ) ) {
+		wp_nav_menu(array(
+			'theme_location' => 'terms',
+			'container' => false
+		));
+	} ?>
 </div>
 </div>
 </div>
+<?php if (get_theme_mod( 'google_analytics' )) include_once("inc/analyticstracking.php"); ?>
 </body>
 </html>

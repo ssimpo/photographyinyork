@@ -275,11 +275,12 @@ footer {
 }
 
 .copyright-notice {
+	color: $black;
 	font-size: 0.6em;
 	padding-top: 0.3rem;
 	padding-bottom: 0.3rem;
+	position: relative;
 	text-align: center;
-	color: $black;
 
 	a, a:visited {
 		color: $jet;
@@ -287,6 +288,29 @@ footer {
 		&:hover {
 			color: lighten($jet, 10%);
 			text-decoration: underline;
+		}
+	}
+
+	#menu-terms {
+		@include breakpoint(small down) {
+			li {
+				display: inline-block;
+			}
+		}
+		@include breakpoint(medium up) {
+			position: absolute;
+		}
+
+		list-style-type: none;
+		padding-right: $spacer;
+		right: 0;
+		top: 0;
+
+		a {
+			padding-left: $spacer;
+			padding-bottom: 0;
+			padding-right: $spacer;
+			padding-top: $spacer * 0.75;
 		}
 	}
 }
